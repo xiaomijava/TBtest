@@ -1,0 +1,66 @@
+﻿.el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    height: 5%;
+    /*position:fixed;
+    left:0;
+    top:0;
+    z-index:100;*/
+}
+.el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    height:5%;
+}
+.el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    overflow: auto;
+    height:100%;
+}
+
+.el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    overflow: auto;
+    height: 90%;
+}
+
+body > .el-container {
+    margin-bottom: 40px;
+}
+/*面包屑导航和搜索*/
+.el-breadcrumb-self {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.search-self {
+    margin-top: 10px;
+}
+/*//分页表格*/
+.el-table-self {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.pagination-footer .el-pagination {
+    float: right;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.el-table td, .el-table th {
+    height: 30px;
+    min-width: 0;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+

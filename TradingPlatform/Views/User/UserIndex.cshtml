@@ -1,0 +1,311 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设置我的资料</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="~/dist/layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/dist/layuiadmin/style/admin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/dist/layuiadmin/style/login.css" media="all">
+</head>
+<body>
+
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12" id="app">
+                <div class="layui-card">
+                    <div class="layui-card-header">设置我的资料</div>
+                    <div class="layui-card-body" pad15>
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-body">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="test-upload-normal">上传图像</button>
+                                        @*<div class="layui-upload-list">*@
+                                        <img class="layui-upload-img" id="test-upload-normal-img" width="100" height="50">
+                                        <p id="test-upload-demoText"></p>
+                                        @*</div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.User_Name" lay-verify="required" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">账号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" v-model="form.User_Number" readonly class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">昵称</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="nickname" v-model="form.User_NickName" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="sex" id="man" v-model="form.User_Sex" value="0" title="男">
+                                    <input type="radio" name="sex" v-model="form.User_Sex" value="1" title="女">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">手机</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="cellphone" v-model="form.Bindphone" lay-verify="phone" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">邮箱</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.User_Email" autocomplete="off" class="layui-input">
+                                </div>
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">qq号码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.User_QQ" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="demo1">确认修改</button>
+                                    @*<button type="reset" class="layui-btn layui-btn-primary">重新填写</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/vue/vue.min.js"></script>
+    <script src="~/assets/js/jquery.js"></script>
+
+    <script src="~/dist/layuiadmin/layui/layui.js"></script>
+    <script>
+
+
+
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+
+
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
+
+            //自定义验证规则
+            form.verify({
+                title: function (value) {
+                    if (value.length < 5) {
+                        return '标题至少得5个字符啊';
+                    }
+                }
+                , pass: [
+                    /^[\S]{6,12}$/
+                    , '密码必须6到12位，且不能出现空格'
+                ]
+                , content: function (value) {
+                    layedit.sync(editIndex);
+                }
+            });
+
+
+            //监听提交
+            form.on('submit(demo1)', function (data) {
+                app.addMethod();
+            });
+        });
+
+        layui.config({
+            base: '/dist/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'set']);
+
+
+        layui.config({
+            base: '/dist/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'upload'], function () {
+            var $ = layui.jquery
+                , upload = layui.upload;
+
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test-upload-normal'
+                , url: '/User/updateUserUrl'
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        $('#test-upload-normal-img').attr('src', result); //图片链接（base64）
+                        layer.msg('上传成功', {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        }, function () {
+                            parent.location.href = '/User/Homeindex';
+                        });
+                    });
+                }
+                , done: function (res) {
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    }
+                    //上传成功
+                }
+                , error: function () {
+                    //演示失败状态，并实现重传
+                    var demoText = $('#test-upload-demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function () {
+                        uploadInst.upload();
+                    });
+                }
+            });
+
+
+            //指定允许上传的文件类型
+            upload.render({
+                elem: '#test-upload-type1'
+                , url: '/upload/'
+                , accept: 'file' //普通文件
+                , done: function (res) {
+                    console.log(res)
+                }
+            });
+            upload.render({ //允许上传的文件后缀
+                elem: '#test-upload-type2'
+                , url: '/upload/'
+                , accept: 'file' //普通文件
+                , exts: 'zip|rar|7z' //只允许上传压缩文件
+                , done: function (res) {
+                    console.log(res)
+                }
+            });
+
+
+            //设定文件大小限制
+            upload.render({
+                elem: '#test-upload-size'
+                , url: '/upload/'
+                , size: 60 //限制文件大小，单位 KB
+                , done: function (res) {
+                    console.log(res)
+                }
+            });
+
+            //同时绑定多个元素，并将属性设定在元素上
+            upload.render({
+                elem: '.test-upload-demoMore'
+                , before: function () {
+                    layer.tips('接口地址：' + this.url, this.item, { tips: 1 });
+                }
+                , done: function (res, index, upload) {
+                    var item = this.item;
+                    console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+                }
+            })
+
+        });
+
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    form: {
+                        Id: '',
+                        User_Name: '',
+                        User_Number: '',
+                        U_Passport: '',
+                        User_Sex: '0',
+                        User_NickName: '',
+                        User_QQ: '',
+                        User_Email: '',
+                        Bindphone: '',
+                        User_Url: '',
+                    },
+                }
+            },
+            mounted: function () {
+                this.GetMenusData();
+            },
+            methods: {
+                //添加菜单
+                addMethod: function () {
+                    var _this = this;
+                    var news = {
+                        User_Name: _this.form.User_Name,
+                        User_Number: _this.form.User_Number,
+                        U_Passport: _this.form.U_Passport,
+                        User_Sex: document.getElementsByName("sex")[0].checked == true ? "0" : "1",
+                        User_NickName: _this.form.User_NickName,
+                        User_QQ: _this.form.User_QQ,
+                        User_Email: _this.form.User_Email,
+                        Bindphone: _this.form.Bindphone,
+                        Id: _this.form.Id
+                    };
+                    $.ajax({
+                        url: '/User/updateUser',
+                        type: 'post',//换成 get 无效
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            model: news,
+                        }),
+                        success: function (response) {
+                            if (response.result) {
+                                //修改成功的提示
+                                layer.msg(response.message, {
+                                    offset: '15px'
+                                    , icon: 1
+                                    , time: 1000
+                                }, function () {
+                                    _this.GetMenusData();//刷新
+                                });
+                            } else {
+                                layer.msg(response.message, {
+                                    offset: '15px'
+                                    , icon: 2
+                                    , time: 1000
+                                }, function () {
+
+                                });
+                            }
+                        }
+                    });
+                }, //获取菜单
+                GetMenusData: function () {
+                    var _this = this;
+                    $.ajax({
+                        url: '/User/GetUserByCount',
+                        type: 'post',//换成 get 无效
+                        contentType: 'application/json',
+                        success: function (response) {
+                            _this.form = response.responseData.test;
+                            $('#test-upload-normal-img').attr('src', _this.form.User_Url); //图片链接（base64）
+                        }
+                    });
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+    <link href="static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="static/h-ui/css/iconfont.css" rel="stylesheet" />
+    <title>利滚利小程序后台登录系统</title>
+    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+
+<body>
+    <input id="TenantId" name="TenantId" value="" type="hidden">
+    <div class="header"></div>
+    <div class="loginWraper">
+        <div id="loginform" class="loginBox">
+            <form class="form form-horizontal" action="index.html" method="post">
+                <div class="row cl">
+                    <label class="form-label col-xs-3"><i class="Hui-iconfont"></i></label>
+                    <div class="formControls col-xs-8">
+                        <input placeholder="账户" class="input-text size-L" type="text" id="userAccount" name="username">
+                        <span id="userName" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <label class="form-label col-xs-3"><i class="Hui-iconfont"></i></label>
+                    <div class="formControls col-xs-8">
+                        <input id="password" name="password" placeholder="密码" class="input-text size-L" type="password">
+                        <span id="pwd" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <div class="formControls col-xs-8 col-xs-offset-3">
+                        <input class="input-text size-L" type="text" placeholder="验证码" id="yanzhengma" name="yzm" onblur="if(this.value==''){this.value='验证码:'}" onclick="if (this.value == '验证码:') { this.value = ''; }" value="验证码:" style="width: 150px;">
+                        &nbsp;<img id="yzm" src="/Yangzm.ashx" />
+                        <a onclick="GetYzm()">看不清，换一张</a>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <div class="formControls col-xs-8 col-xs-offset-3">
+                        <input class="btn btn-default radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" type="button" onclick="return CheckedLogin()">
+                        &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
+                        <input class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;" type="reset">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer">洋世达后台登录 YSD.comandy by H-ui.admin v3.1</div>
+    <script src="https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/H-ui.min.js"></script>
+
+    <!--此乃百度统计代码，请自行删除-->
+    <script>
+        function GetYzm() {
+
+            $("#yzm").attr("src", "/Yangzm.ashx?time" + new Date().getTime())
+        }
+
+        function CheckedLogin() {
+
+            //获取用户编号
+            var userAccount = document.getElementById("userAccount").value;
+
+
+            if (userAccount == null || userAccount.trim() == "") {
+
+                var tip = document.getElementById("userName");
+
+                tip.innerHTML = "账号不能为空";
+                return false;
+            }
+
+            //获取密码
+            var userPassword = document.getElementById("password").value;
+
+            if (userPassword == null || userPassword.trim() == "") {
+                document.getElementById("pwd").innerHTML = "密码不能为空";//使用ajxs的get方法
+                return false;
+            }
+
+            //获取验证码
+            var yzm = document.getElementById("yanzhengma").value;
+
+            if (yzm == null || yzm.trim() == "") {
+                document.getElementById("yanzm").innerHTML = "验证码不能为空";
+                return false;
+
+            }
+
+            //清空
+            document.getElementById("userName").innerHTML = "";
+            document.getElementById("pwd").innerHTML = "";
+
+            $.post("/Login/GetConnLongin", { name: userAccount, pwd: userPassword, yzm: yzm }, function (ret) {
+
+                //判断
+                if (ret == "ok") {
+                    window.location = "/Menu/Menu";
+                }
+                else {
+                    alert(ret);
+
+                }
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>

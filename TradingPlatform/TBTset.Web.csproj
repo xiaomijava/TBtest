@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E32A98DC-5394-4E79-A789-0830077135E0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TradingPlatform.web</RootNamespace>
+    <AssemblyName>TradingPlatform.web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\GlobalExceptionFilterAttribute.cs" />
+    <Compile Include="App_Start\GlobalHandleErrorAttribute.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Yangzm.ashx.cs">
+      <DependentUpon>Yangzm.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\axios\axios.min.js" />
+    <Content Include="assets\elementui\index.css" />
+    <Content Include="assets\elementui\index.js" />
+    <Content Include="assets\Index\index.css" />
+    <Content Include="assets\js\H-ui.min.js" />
+    <Content Include="assets\js\jquery.js" />
+    <Content Include="assets\js\scripts.js" />
+    <Content Include="assets\vue\vue.min.js" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\NPOI.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\TradingPlatform.Common.dll" />
+    <Content Include="bin\TradingPlatform.Common.pdb" />
+    <Content Include="bin\TradingPlatform.Controllers.dll" />
+    <Content Include="bin\TradingPlatform.Controllers.pdb" />
+    <Content Include="bin\TradingPlatform.IService.dll" />
+    <Content Include="bin\TradingPlatform.IService.pdb" />
+    <Content Include="bin\TradingPlatform.Model.dll" />
+    <Content Include="bin\TradingPlatform.Model.pdb" />
+    <Content Include="bin\TradingPlatform.Service.dll" />
+    <Content Include="bin\TradingPlatform.Service.pdb" />
+    <Content Include="bin\TradingPlatform.web.dll" />
+    <Content Include="bin\TradingPlatform.web.pdb" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="dist\layuiadmin\config.js" />
+    <Content Include="dist\layuiadmin\json\console\prograss.js" />
+    <Content Include="dist\layuiadmin\json\console\top-card.js" />
+    <Content Include="dist\layuiadmin\json\console\top-search.js" />
+    <Content Include="dist\layuiadmin\json\content\comment.js" />
+    <Content Include="dist\layuiadmin\json\content\list.js" />
+    <Content Include="dist\layuiadmin\json\content\tags.js" />
+    <Content Include="dist\layuiadmin\json\forum\list.js" />
+    <Content Include="dist\layuiadmin\json\forum\replys.js" />
+    <Content Include="dist\layuiadmin\json\layer\photos.js" />
+    <Content Include="dist\layuiadmin\json\layim\getList.js" />
+    <Content Include="dist\layuiadmin\json\layim\getMembers.js" />
+    <Content Include="dist\layuiadmin\json\mall\order.js" />
+    <Content Include="dist\layuiadmin\json\menu.js" />
+    <Content Include="dist\layuiadmin\json\menu1.js" />
+    <Content Include="dist\layuiadmin\json\message\all.js" />
+    <Content Include="dist\layuiadmin\json\message\detail.js" />
+    <Content Include="dist\layuiadmin\json\message\direct.js" />
+    <Content Include="dist\layuiadmin\json\message\new.js" />
+    <Content Include="dist\layuiadmin\json\message\notice.js" />
+    <Content Include="dist\layuiadmin\json\table\demo.js" />
+    <Content Include="dist\layuiadmin\json\table\demo2.js" />
+    <Content Include="dist\layuiadmin\json\table\demo3.js" />
+    <Content Include="dist\layuiadmin\json\table\user.js" />
+    <Content Include="dist\layuiadmin\json\table\user30.js" />
+    <Content Include="dist\layuiadmin\json\upload\demo.js" />
+    <Content Include="dist\layuiadmin\json\useradmin\mangadmin.js" />
+    <Content Include="dist\layuiadmin\json\useradmin\role.js" />
+    <Content Include="dist\layuiadmin\json\useradmin\webuser.js" />
+    <Content Include="dist\layuiadmin\json\user\forget.js" />
+    <Content Include="dist\layuiadmin\json\user\login.js" />
+    <Content Include="dist\layuiadmin\json\user\logout.js" />
+    <Content Include="dist\layuiadmin\json\user\reg.js" />
+    <Content Include="dist\layuiadmin\json\user\resetpass.js" />
+    <Content Include="dist\layuiadmin\json\user\session.js" />
+    <Content Include="dist\layuiadmin\json\user\sms.js" />
+    <Content Include="dist\layuiadmin\json\workorder\demo.js" />
+    <Content Include="dist\layuiadmin\json\说明.txt" />
+    <Content Include="dist\layuiadmin\layui\css\layui.css" />
+    <Content Include="dist\layuiadmin\layui\css\layui.mobile.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\code.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\icon.png" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\layer.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\html\chatlog.html" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\html\find.html" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\html\msgbox.html" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\layim.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\mobile\layim.css" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\1.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\2.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\3.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\4.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\5.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\skin\logo.jpg" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\voice\default.mp3" />
+    <Content Include="dist\layuiadmin\layui\font\iconfont.svg" />
+    <Content Include="dist\layuiadmin\layui\images\face\0.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\1.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\10.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\11.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\12.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\13.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\14.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\15.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\16.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\17.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\18.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\19.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\2.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\20.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\21.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\22.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\23.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\24.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\25.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\26.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\27.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\28.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\29.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\3.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\30.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\31.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\32.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\33.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\34.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\35.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\36.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\37.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\38.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\39.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\4.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\40.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\41.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\42.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\43.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\44.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\45.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\46.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\47.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\48.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\49.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\5.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\50.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\51.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\52.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\53.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\54.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\55.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\56.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\57.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\58.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\59.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\6.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\60.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\61.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\62.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\63.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\64.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\65.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\66.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\67.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\68.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\69.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\7.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\70.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\71.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\8.gif" />
+    <Content Include="dist\layuiadmin\layui\images\face\9.gif" />
+    <Content Include="dist\layuiadmin\layui\layui.all.js" />
+    <Content Include="dist\layuiadmin\layui\layui.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\carousel.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\code.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\colorpicker.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\element.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\flow.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\form.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\jquery.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\laydate.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\layedit.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\layer.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\layim.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\laypage.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\laytpl.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\mobile.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\rate.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\slider.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\table.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\tree.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\upload.js" />
+    <Content Include="dist\layuiadmin\layui\lay\modules\util.js" />
+    <Content Include="dist\layuiadmin\lib\admin.js" />
+    <Content Include="dist\layuiadmin\lib\extend\echarts.js" />
+    <Content Include="dist\layuiadmin\lib\extend\echartsTheme.js" />
+    <Content Include="dist\layuiadmin\lib\index.js" />
+    <Content Include="dist\layuiadmin\lib\view.js" />
+    <Content Include="dist\layuiadmin\modules\common.js" />
+    <Content Include="dist\layuiadmin\modules\console.js" />
+    <Content Include="dist\layuiadmin\modules\contlist.js" />
+    <Content Include="dist\layuiadmin\modules\forum.js" />
+    <Content Include="dist\layuiadmin\modules\im.js" />
+    <Content Include="dist\layuiadmin\modules\message.js" />
+    <Content Include="dist\layuiadmin\modules\sample.js" />
+    <Content Include="dist\layuiadmin\modules\senior.js" />
+    <Content Include="dist\layuiadmin\modules\set.js" />
+    <Content Include="dist\layuiadmin\modules\user.js" />
+    <Content Include="dist\layuiadmin\modules\useradmin.js" />
+    <Content Include="dist\layuiadmin\modules\workorder.js" />
+    <Content Include="dist\layuiadmin\style\admin.css" />
+    <Content Include="dist\layuiadmin\style\login.css" />
+    <Content Include="dist\layuiadmin\style\res\bg-none.jpg" />
+    <Content Include="dist\layuiadmin\style\res\layui-logo.jpg" />
+    <Content Include="dist\layuiadmin\style\res\logo-black.png" />
+    <Content Include="dist\layuiadmin\style\res\logo.png" />
+    <Content Include="dist\layuiadmin\style\res\template\character.jpg" />
+    <Content Include="dist\layuiadmin\style\res\template\huge.jpg" />
+    <Content Include="dist\layuiadmin\style\res\template\portrait.png" />
+    <Content Include="dist\layuiadmin\style\template.css" />
+    <Content Include="dist\layuiadmin\tpl\layim\demo.html" />
+    <Content Include="dist\layuiadmin\tpl\system\about.html" />
+    <Content Include="dist\layuiadmin\tpl\system\get.html" />
+    <Content Include="dist\layuiadmin\tpl\system\more.html" />
+    <Content Include="dist\layuiadmin\tpl\system\theme.html" />
+    <Content Include="dist\layuiadmin\tpl\system\说明.txt" />
+    <Content Include="dist\layuiadmin\tpl\说明.txt" />
+    <Content Include="dist\views\app\content\comment.html" />
+    <Content Include="dist\views\app\content\contform.html" />
+    <Content Include="dist\views\app\content\list.html" />
+    <Content Include="dist\views\app\content\listform.html" />
+    <Content Include="dist\views\app\content\tags.html" />
+    <Content Include="dist\views\app\content\tagsform.html" />
+    <Content Include="dist\views\app\forum\list.html" />
+    <Content Include="dist\views\app\forum\listform.html" />
+    <Content Include="dist\views\app\forum\replys.html" />
+    <Content Include="dist\views\app\forum\replysform.html" />
+    <Content Include="dist\views\app\mall\category.html" />
+    <Content Include="dist\views\app\mall\list.html" />
+    <Content Include="dist\views\app\mall\specs.html" />
+    <Content Include="dist\views\app\message\detail.html" />
+    <Content Include="dist\views\app\message\index.html" />
+    <Content Include="dist\views\app\workorder\list.html" />
+    <Content Include="dist\views\app\workorder\listform.html" />
+    <Content Include="dist\views\app\说明.txt" />
+    <Content Include="dist\views\component\anim\index.html" />
+    <Content Include="dist\views\component\auxiliar\index.html" />
+    <Content Include="dist\views\component\badge\index.html" />
+    <Content Include="dist\views\component\button\index.html" />
+    <Content Include="dist\views\component\carousel\index.html" />
+    <Content Include="dist\views\component\code\index.html" />
+    <Content Include="dist\views\component\colorpicker\index.html" />
+    <Content Include="dist\views\component\flow\index.html" />
+    <Content Include="dist\views\component\form\element.html" />
+    <Content Include="dist\views\component\form\group.html" />
+    <Content Include="dist\views\component\grid\all.html" />
+    <Content Include="dist\views\component\grid\list.html" />
+    <Content Include="dist\views\component\grid\mobile-pc.html" />
+    <Content Include="dist\views\component\grid\mobile.html" />
+    <Content Include="dist\views\component\grid\speed-dial.html" />
+    <Content Include="dist\views\component\grid\stack.html" />
+    <Content Include="dist\views\component\laydate\demo1.html" />
+    <Content Include="dist\views\component\laydate\demo2.html" />
+    <Content Include="dist\views\component\laydate\index.html" />
+    <Content Include="dist\views\component\laydate\special-demo.html" />
+    <Content Include="dist\views\component\laydate\theme.html" />
+    <Content Include="dist\views\component\layer\list.html" />
+    <Content Include="dist\views\component\layer\special-demo.html" />
+    <Content Include="dist\views\component\layer\theme.html" />
+    <Content Include="dist\views\component\laypage\demo1.html" />
+    <Content Include="dist\views\component\laypage\demo2.html" />
+    <Content Include="dist\views\component\laypage\index.html" />
+    <Content Include="dist\views\component\laytpl\index.html" />
+    <Content Include="dist\views\component\nav\index.html" />
+    <Content Include="dist\views\component\panel\index.html" />
+    <Content Include="dist\views\component\progress\index.html" />
+    <Content Include="dist\views\component\rate\index.html" />
+    <Content Include="dist\views\component\slider\index.html" />
+    <Content Include="dist\views\component\table\auto.html" />
+    <Content Include="dist\views\component\table\cellEdit.html" />
+    <Content Include="dist\views\component\table\cellEvent.html" />
+    <Content Include="dist\views\component\table\checkbox.html" />
+    <Content Include="dist\views\component\table\data.html" />
+    <Content Include="dist\views\component\table\fixed.html" />
+    <Content Include="dist\views\component\table\form.html" />
+    <Content Include="dist\views\component\table\height.html" />
+    <Content Include="dist\views\component\table\index.html" />
+    <Content Include="dist\views\component\table\initSort.html" />
+    <Content Include="dist\views\component\table\onrow.html" />
+    <Content Include="dist\views\component\table\operate.html" />
+    <Content Include="dist\views\component\table\page.html" />
+    <Content Include="dist\views\component\table\parseData.html" />
+    <Content Include="dist\views\component\table\radio.html" />
+    <Content Include="dist\views\component\table\reload.html" />
+    <Content Include="dist\views\component\table\resetPage.html" />
+    <Content Include="dist\views\component\table\simple.html" />
+    <Content Include="dist\views\component\table\static.html" />
+    <Content Include="dist\views\component\table\style.html" />
+    <Content Include="dist\views\component\table\thead.html" />
+    <Content Include="dist\views\component\table\toolbar.html" />
+    <Content Include="dist\views\component\table\tostatic.html" />
+    <Content Include="dist\views\component\table\totalRow.html" />
+    <Content Include="dist\views\component\tabs\index.html" />
+    <Content Include="dist\views\component\temp.html" />
+    <Content Include="dist\views\component\timeline\index.html" />
+    <Content Include="dist\views\component\upload\demo1.html" />
+    <Content Include="dist\views\component\upload\demo2.html" />
+    <Content Include="dist\views\component\upload\index.html" />
+    <Content Include="dist\views\component\util\index.html" />
+    <Content Include="dist\views\component\说明.txt" />
+    <Content Include="dist\views\home\console.html" />
+    <Content Include="dist\views\home\homepage1.html" />
+    <Content Include="dist\views\home\homepage2.html" />
+    <Content Include="dist\views\iframe\layer\iframe.html" />
+    <Content Include="dist\views\index.html" />
+    <Content Include="dist\views\senior\echarts\bar.html" />
+    <Content Include="dist\views\senior\echarts\line.html" />
+    <Content Include="dist\views\senior\echarts\map.html" />
+    <Content Include="dist\views\senior\im\index.html" />
+    <Content Include="dist\views\senior\说明.txt" />
+    <Content Include="dist\views\set\system\email.html" />
+    <Content Include="dist\views\set\system\website.html" />
+    <Content Include="dist\views\set\user\info.html" />
+    <Content Include="dist\views\set\user\password.html" />
+    <Content Include="dist\views\set\说明.txt" />
+    <Content Include="dist\views\system\about.html" />
+    <Content Include="dist\views\system\get.html" />
+    <Content Include="dist\views\system\more.html" />
+    <Content Include="dist\views\system\theme.html" />
+    <Content Include="dist\views\system\说明.txt" />
+    <Content Include="dist\views\template\addresslist.html" />
+    <Content Include="dist\views\template\caller.html" />
+    <Content Include="dist\views\template\goodslist.html" />
+    <Content Include="dist\views\template\msgboard.html" />
+    <Content Include="dist\views\template\personalpage.html" />
+    <Content Include="dist\views\template\search.html" />
+    <Content Include="dist\views\template\temp.html" />
+    <Content Include="dist\views\template\tips\404.html" />
+    <Content Include="dist\views\template\tips\error.html" />
+    <Content Include="dist\views\template\说明.txt" />
+    <Content Include="dist\views\user\administrators\adminform.html" />
+    <Content Include="dist\views\user\administrators\list.html" />
+    <Content Include="dist\views\user\administrators\role.html" />
+    <Content Include="dist\views\user\administrators\roleform.html" />
+    <Content Include="dist\views\user\forget.html" />
+    <Content Include="dist\views\user\login.html" />
+    <Content Include="dist\views\user\reg.html" />
+    <Content Include="dist\views\user\user\list.html" />
+    <Content Include="dist\views\user\user\userform.html" />
+    <Content Include="dist\views\user\说明.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="index_files\default.css" />
+    <Content Include="index_files\functions.js" />
+    <Content Include="index_files\jquery.min.js" />
+    <Content Include="index_files\jscex-async-powerpack.min.js" />
+    <Content Include="index_files\jscex-async.min.js" />
+    <Content Include="index_files\jscex-builderbase.min.js" />
+    <Content Include="index_files\jscex-jit.js" />
+    <Content Include="index_files\jscex-parser.js" />
+    <Content Include="index_files\jscex.min.js" />
+    <Content Include="index_files\love.js" />
+    <Content Include="log4net.config" />
+    <Content Include="assets\elementui\fonts\element-icons.ttf" />
+    <Content Include="assets\elementui\fonts\element-icons.woff" />
+    <Content Include="dist\layuiadmin\layui\css\modules\layim\html\getmsg.json" />
+    <Content Include="dist\layuiadmin\layui\font\iconfont.eot" />
+    <Content Include="dist\layuiadmin\layui\font\iconfont.ttf" />
+    <Content Include="dist\layuiadmin\layui\font\iconfont.woff" />
+    <Content Include="static\urlimages\2019-11-10\FLAMING MOUNTAIN.JPG" />
+    <Content Include="static\urlimages\2019-11-10\psbYJ6EZSSW.jpg" />
+    <Content Include="static\urlimages\2019-11-12\FLAMING MOUNTAIN.JPG" />
+    <Content Include="static\urlimages\2019-11-12\psbYJ6EZSSW.jpg" />
+    <Content Include="static\urlimages\2019-11-12\微信截图_20190304204527.png" />
+    <Content Include="static\urlimages\2019-11-20\QQ图片20191119193121.jpg" />
+    <Content Include="static\urlimages\2019-11-20\QQ图片20191119194500.jpg" />
+    <Content Include="static\urlimages\2019-11-20\QQ图片20191119194633.jpg" />
+    <Content Include="纪念日.html" />
+    <Content Include="给你们.mp3" />
+    <None Include="bin\TradingPlatform.web.dll.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="static\h-ui.admin\css\H-ui.admin.css" />
+    <Content Include="static\h-ui.admin\css\H-ui.login.css" />
+    <Content Include="static\h-ui.admin\css\style.css" />
+    <Content Include="static\h-ui.admin\images\0.jpg" />
+    <Content Include="static\h-ui.admin\images\20141212231001-7761ff60.jpg" />
+    <Content Include="static\h-ui.admin\images\54587511eb6db.jpg" />
+    <Content Include="static\h-ui.admin\images\6c69d196042f42f2a756dcc77093e4d1_th.jpg" />
+    <Content Include="static\h-ui.admin\images\admin-login-bg.jpg" />
+    <Content Include="static\h-ui.admin\images\admin-loginform-bg.png" />
+    <Content Include="static\h-ui.admin\images\cn.gif" />
+    <Content Include="static\h-ui.admin\images\loading.gif" />
+    <Content Include="static\h-ui.admin\images\logo.png" />
+    <Content Include="static\h-ui.admin\images\Member-loginImage.jpg" />
+    <Content Include="static\h-ui.admin\images\tima.jpg" />
+    <Content Include="static\h-ui.admin\images\timg.jpg" />
+    <Content Include="static\h-ui.admin\images\timq.jpg" />
+    <Content Include="static\h-ui.admin\images\tooopen_sy_196835567584.jpg" />
+    <Content Include="static\h-ui.admin\images\um.gif" />
+    <Content Include="static\h-ui\css\H-ui.css" />
+    <Content Include="static\h-ui\css\H-ui.ie.css" />
+    <Content Include="static\h-ui\css\H-ui.min.css" />
+    <Content Include="static\h-ui\css\H-ui.reset.css" />
+    <Content Include="static\h-ui\css\layer.css" />
+    <Content Include="static\h-ui\js\H-ui.js" />
+    <Content Include="static\h-ui\js\H-ui.min.js" />
+    <Content Include="static\h-ui\js\jquery.min.js" />
+    <Content Include="static\h-ui\js\layer.js" />
+    <Content Include="static\layer\2.4\layer.js" />
+    <Content Include="static\layer\2.4\skin\layer.css" />
+    <Content Include="static\urlimages\2019-11-06\FLAMING MOUNTAIN.JPG" />
+    <Content Include="static\utf8-jsp\dialogs\anchor\anchor.html" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\attachment.css" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\attachment.html" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\attachment.js" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\alignicon.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\bg.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\file-icons.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\icons.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\icons.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\image.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\progress.png" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\success.gif" />
+    <Content Include="static\utf8-jsp\dialogs\attachment\images\success.png" />
+    <Content Include="static\utf8-jsp\dialogs\background\background.css" />
+    <Content Include="static\utf8-jsp\dialogs\background\background.html" />
+    <Content Include="static\utf8-jsp\dialogs\background\background.js" />
+    <Content Include="static\utf8-jsp\dialogs\background\images\bg.png" />
+    <Content Include="static\utf8-jsp\dialogs\background\images\success.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\chart.config.js" />
+    <Content Include="static\utf8-jsp\dialogs\charts\charts.css" />
+    <Content Include="static\utf8-jsp\dialogs\charts\charts.html" />
+    <Content Include="static\utf8-jsp\dialogs\charts\charts.js" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts0.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts1.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts2.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts3.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts4.png" />
+    <Content Include="static\utf8-jsp\dialogs\charts\images\charts5.png" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\emotion.css" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\emotion.html" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\emotion.js" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\0.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\bface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\cface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\fface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\tface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\wface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\emotion\images\yface.gif" />
+    <Content Include="static\utf8-jsp\dialogs\gmap\gmap.html" />
+    <Content Include="static\utf8-jsp\dialogs\help\help.css" />
+    <Content Include="static\utf8-jsp\dialogs\help\help.html" />
+    <Content Include="static\utf8-jsp\dialogs\help\help.js" />
+    <Content Include="static\utf8-jsp\dialogs\image\image.css" />
+    <Content Include="static\utf8-jsp\dialogs\image\image.html" />
+    <Content Include="static\utf8-jsp\dialogs\image\image.js" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\alignicon.jpg" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\bg.png" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\icons.gif" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\icons.png" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\image.png" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\progress.png" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\success.gif" />
+    <Content Include="static\utf8-jsp\dialogs\image\images\success.png" />
+    <Content Include="static\utf8-jsp\dialogs\insertframe\insertframe.html" />
+    <Content Include="static\utf8-jsp\dialogs\internal.js" />
+    <Content Include="static\utf8-jsp\dialogs\link\link.html" />
+    <Content Include="static\utf8-jsp\dialogs\map\map.html" />
+    <Content Include="static\utf8-jsp\dialogs\map\show.html" />
+    <Content Include="static\utf8-jsp\dialogs\music\music.css" />
+    <Content Include="static\utf8-jsp\dialogs\music\music.html" />
+    <Content Include="static\utf8-jsp\dialogs\music\music.js" />
+    <Content Include="static\utf8-jsp\dialogs\preview\preview.html" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\addimg.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\brush.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\delimg.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\empty.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\eraser.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\redo.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\redoH.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\scale.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\size.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\undo.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\images\undoH.png" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\scrawl.css" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\scrawl.html" />
+    <Content Include="static\utf8-jsp\dialogs\scrawl\scrawl.js" />
+    <Content Include="static\utf8-jsp\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="static\utf8-jsp\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="static\utf8-jsp\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="static\utf8-jsp\dialogs\spechars\spechars.html" />
+    <Content Include="static\utf8-jsp\dialogs\spechars\spechars.js" />
+    <Content Include="static\utf8-jsp\dialogs\table\dragicon.png" />
+    <Content Include="static\utf8-jsp\dialogs\table\edittable.css" />
+    <Content Include="static\utf8-jsp\dialogs\table\edittable.html" />
+    <Content Include="static\utf8-jsp\dialogs\table\edittable.js" />
+    <Content Include="static\utf8-jsp\dialogs\table\edittd.html" />
+    <Content Include="static\utf8-jsp\dialogs\table\edittip.html" />
+    <Content Include="static\utf8-jsp\dialogs\template\config.js" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\bg.gif" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\pre0.png" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\pre1.png" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\pre2.png" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\pre3.png" />
+    <Content Include="static\utf8-jsp\dialogs\template\images\pre4.png" />
+    <Content Include="static\utf8-jsp\dialogs\template\template.css" />
+    <Content Include="static\utf8-jsp\dialogs\template\template.html" />
+    <Content Include="static\utf8-jsp\dialogs\template\template.js" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\bg.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\center_focus.jpg" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\file-icons.gif" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\file-icons.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\icons.gif" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\icons.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\image.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\left_focus.jpg" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\none_focus.jpg" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\progress.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\right_focus.jpg" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\success.gif" />
+    <Content Include="static\utf8-jsp\dialogs\video\images\success.png" />
+    <Content Include="static\utf8-jsp\dialogs\video\video.css" />
+    <Content Include="static\utf8-jsp\dialogs\video\video.html" />
+    <Content Include="static\utf8-jsp\dialogs\video\video.js" />
+    <Content Include="static\utf8-jsp\dialogs\webapp\webapp.html" />
+    <Content Include="static\utf8-jsp\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="static\utf8-jsp\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="static\utf8-jsp\dialogs\wordimage\tangram.js" />
+    <Content Include="static\utf8-jsp\dialogs\wordimage\wordimage.html" />
+    <Content Include="static\utf8-jsp\dialogs\wordimage\wordimage.js" />
+    <Content Include="static\utf8-jsp\index.html" />
+    <Content Include="static\utf8-jsp\jsp\lib\commons-codec-1.9.jar" />
+    <Content Include="static\utf8-jsp\jsp\lib\commons-fileupload-1.3.1.jar" />
+    <Content Include="static\utf8-jsp\jsp\lib\commons-io-2.4.jar" />
+    <Content Include="static\utf8-jsp\jsp\lib\json.jar" />
+    <Content Include="static\utf8-jsp\jsp\lib\ueditor-1.1.2.jar" />
+    <Content Include="static\utf8-jsp\lang\en\en.js" />
+    <Content Include="static\utf8-jsp\lang\en\images\addimage.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\background.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\button.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\copy.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\deletedisable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\deleteenable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\listbackground.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\localimage.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\music.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\rotateleftdisable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\rotateleftenable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\rotaterightdisable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\rotaterightenable.png" />
+    <Content Include="static\utf8-jsp\lang\en\images\upload.png" />
+    <Content Include="static\utf8-jsp\lang\zh-cn\images\copy.png" />
+    <Content Include="static\utf8-jsp\lang\zh-cn\images\localimage.png" />
+    <Content Include="static\utf8-jsp\lang\zh-cn\images\music.png" />
+    <Content Include="static\utf8-jsp\lang\zh-cn\images\upload.png" />
+    <Content Include="static\utf8-jsp\lang\zh-cn\zh-cn.js" />
+    <Content Include="static\utf8-jsp\themes\default\css\ueditor.css" />
+    <Content Include="static\utf8-jsp\themes\default\css\ueditor.min.css" />
+    <Content Include="static\utf8-jsp\themes\default\dialogbase.css" />
+    <Content Include="static\utf8-jsp\themes\default\images\anchor.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\arrow.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\arrow_down.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\arrow_up.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\button-bg.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\cancelbutton.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\charts.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\cursor_h.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\cursor_h.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\cursor_v.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\cursor_v.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\dialog-title-bg.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\filescan.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\highlighted.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\icons-all.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\icons.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\icons.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\loaderror.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\loading.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\lock.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\pagebreak.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\scale.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\sortable.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\spacer.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\sparator_v.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\table-cell-align.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\toolbar_bg.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\unhighlighted.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\upload.png" />
+    <Content Include="static\utf8-jsp\themes\default\images\videologo.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\word.gif" />
+    <Content Include="static\utf8-jsp\themes\default\images\wordpaste.png" />
+    <Content Include="static\utf8-jsp\themes\iframe.css" />
+    <Content Include="static\utf8-jsp\third-party\codemirror\codemirror.css" />
+    <Content Include="static\utf8-jsp\third-party\codemirror\codemirror.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\highcharts-more.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\highcharts.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\highcharts.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\annotations.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\data.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\data.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\exporting.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\funnel.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\map.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\map.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\themes\gray.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\themes\grid.js" />
+    <Content Include="static\utf8-jsp\third-party\highcharts\themes\skies.js" />
+    <Content Include="static\utf8-jsp\third-party\jquery-1.10.2.js" />
+    <Content Include="static\utf8-jsp\third-party\jquery-1.10.2.min.js" />
+    <Content Include="static\utf8-jsp\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="static\utf8-jsp\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="static\utf8-jsp\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="static\utf8-jsp\third-party\video-js\font\vjs.svg" />
+    <Content Include="static\utf8-jsp\third-party\video-js\video-js.css" />
+    <Content Include="static\utf8-jsp\third-party\video-js\video-js.min.css" />
+    <Content Include="static\utf8-jsp\third-party\video-js\video-js.swf" />
+    <Content Include="static\utf8-jsp\third-party\video-js\video.dev.js" />
+    <Content Include="static\utf8-jsp\third-party\video-js\video.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\Uploader.swf" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.css" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.min.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="static\utf8-jsp\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="static\utf8-jsp\third-party\xss.min.js" />
+    <Content Include="static\utf8-jsp\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="static\utf8-jsp\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="static\utf8-jsp\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="static\utf8-jsp\ueditor.all.js" />
+    <Content Include="static\utf8-jsp\ueditor.all.min.js" />
+    <Content Include="static\utf8-jsp\ueditor.config.js" />
+    <Content Include="static\utf8-jsp\ueditor.parse.js" />
+    <Content Include="static\utf8-jsp\ueditor.parse.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Yangzm.ashx" />
+    <Content Include="static\utf8-jsp\jsp\config.json" />
+    <Content Include="static\utf8-jsp\jsp\controller.jsp" />
+    <Content Include="static\utf8-jsp\third-party\jquery-1.10.2.min.map" />
+    <Content Include="static\utf8-jsp\third-party\video-js\font\vjs.eot" />
+    <Content Include="static\utf8-jsp\third-party\video-js\font\vjs.ttf" />
+    <Content Include="static\utf8-jsp\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\User\Admin.cshtml" />
+    <Content Include="Views\User\UserIndex.cshtml" />
+    <Content Include="Views\User\UserPass.cshtml" />
+    <Content Include="Views\User\Homeindex.cshtml" />
+    <Content Include="Views\Finance\FinanceIndex.cshtml" />
+    <Content Include="Views\Finance\MoneyIndex.cshtml" />
+    <Content Include="Views\Shared\_LayouFather.cshtml" />
+    <Content Include="Views\User\Onepage.cshtml" />
+    <Content Include="Views\Menu\Menu.cshtml" />
+    <Content Include="Views\Role\Role.cshtml" />
+    <Content Include="Views\News\News.cshtml" />
+    <Content Include="Views\Role\LayuiRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\zh-Hans\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TradingPlatform.Common\TBTset.Common.csproj">
+      <Project>{fa349983-18ca-4e81-86a7-ad5dbd28682f}</Project>
+      <Name>TBTset.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TradingPlatform.Controllers\TBTset.Controllers.csproj">
+      <Project>{fbdde36e-3bdc-4a18-9a9b-746f8351d6c8}</Project>
+      <Name>TBTset.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TradingPlatform.IService\TradingPlatform.IService.csproj">
+      <Project>{e951439c-f86d-4ee5-a956-15bc2e87e9d5}</Project>
+      <Name>TradingPlatform.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TradingPlatform.Model\TBTset.Model.csproj">
+      <Project>{f71420a2-12b6-4ba7-aa9f-51ad8af5db20}</Project>
+      <Name>TBTset.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TradingPlatform.Service\TradingPlatform.Service.csproj">
+      <Project>{ca60fc29-95b9-4adb-af74-96c290902a50}</Project>
+      <Name>TradingPlatform.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52993</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:23456/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:23456/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

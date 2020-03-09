@@ -1,0 +1,2143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\发布测试2</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/axios/axios.min.js">
+      <publishTime>10/16/2019 21:08:18</publishTime>
+    </File>
+    <File Include="assets/elementui/fonts/element-icons.ttf">
+      <publishTime>10/16/2019 21:08:20</publishTime>
+    </File>
+    <File Include="assets/elementui/fonts/element-icons.woff">
+      <publishTime>10/16/2019 21:08:20</publishTime>
+    </File>
+    <File Include="assets/elementui/index.css">
+      <publishTime>10/16/2019 21:08:21</publishTime>
+    </File>
+    <File Include="assets/elementui/index.js">
+      <publishTime>10/16/2019 21:08:20</publishTime>
+    </File>
+    <File Include="assets/Index/index.css">
+      <publishTime>10/16/2019 21:08:18</publishTime>
+    </File>
+    <File Include="assets/js/H-ui.min.js">
+      <publishTime>10/16/2019 21:08:22</publishTime>
+    </File>
+    <File Include="assets/js/jquery.js">
+      <publishTime>10/16/2019 21:08:22</publishTime>
+    </File>
+    <File Include="assets/js/scripts.js">
+      <publishTime>10/16/2019 21:08:22</publishTime>
+    </File>
+    <File Include="assets/vue/vue.min.js">
+      <publishTime>10/16/2019 21:08:18</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>10/16/2019 21:09:47</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/16/2019 21:10:05</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/16/2019 21:10:06</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>08/15/2018 17:16:34</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.TelemetryCorrelation.dll">
+      <publishTime>10/16/2019 21:10:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>10/16/2019 21:09:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/16/2019 21:09:49</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/16/2019 21:09:49</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>12/17/2018 19:15:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>10/16/2019 21:09:19</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>10/16/2019 21:10:11</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/16/2019 21:09:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/16/2019 21:10:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/16/2019 21:10:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/16/2019 21:09:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/16/2019 21:09:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>10/16/2019 21:10:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/16/2019 21:10:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/16/2019 21:10:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/16/2019 21:10:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/16/2019 21:10:09</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Common.dll">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Common.pdb">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Controllers.dll">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Controllers.pdb">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.IService.dll">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.IService.pdb">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Model.dll">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Model.pdb">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Service.dll">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.Service.pdb">
+      <publishTime>11/10/2019 20:48:18</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.web.dll">
+      <publishTime>11/10/2019 20:56:14</publishTime>
+    </File>
+    <File Include="bin/TradingPlatform.web.pdb">
+      <publishTime>11/10/2019 20:56:14</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>10/16/2019 21:10:13</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/config.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/console/prograss.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/console/top-card.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/console/top-search.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/content/comment.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/content/list.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/content/tags.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/forum/list.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/forum/replys.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/layer/photos.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/layim/getList.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/layim/getMembers.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/mall/order.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/menu.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/menu1.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/message/all.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/message/detail.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/message/direct.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/message/new.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/message/notice.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/table/demo.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/table/demo2.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/table/demo3.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/table/user.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/table/user30.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/upload/demo.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/forget.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/login.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/logout.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/reg.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/resetpass.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/session.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/user/sms.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/useradmin/mangadmin.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/useradmin/role.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/useradmin/webuser.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/workorder/demo.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/json/说明.txt">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/layui.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/layui.mobile.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/code.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/laydate/default/laydate.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/icon-ext.png">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/icon.png">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/layer.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/loading-0.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/loading-1.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layer/default/loading-2.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/html/chatlog.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/html/find.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/html/getmsg.json">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/html/msgbox.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/layim.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/mobile/layim.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/1.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/2.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/3.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/4.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/5.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/skin/logo.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/css/modules/layim/voice/default.mp3">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/font/iconfont.eot">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/font/iconfont.svg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/font/iconfont.ttf">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/font/iconfont.woff">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/0.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/1.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/10.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/11.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/12.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/13.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/14.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/15.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/16.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/17.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/18.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/19.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/2.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/20.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/21.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/22.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/23.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/24.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/25.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/26.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/27.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/28.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/29.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/3.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/30.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/31.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/32.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/33.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/34.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/35.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/36.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/37.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/38.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/39.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/4.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/40.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/41.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/42.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/43.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/44.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/45.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/46.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/47.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/48.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/49.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/5.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/50.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/51.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/52.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/53.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/54.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/55.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/56.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/57.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/58.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/59.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/6.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/60.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/61.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/62.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/63.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/64.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/65.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/66.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/67.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/68.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/69.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/7.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/70.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/71.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/8.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/images/face/9.gif">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/carousel.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/code.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/colorpicker.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/element.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/flow.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/form.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/jquery.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/laydate.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/layedit.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/layer.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/layim.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/laypage.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/laytpl.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/mobile.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/rate.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/slider.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/table.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/tree.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/upload.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/lay/modules/util.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/layui.all.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/layui/layui.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/lib/admin.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/lib/extend/echarts.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/lib/extend/echartsTheme.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/lib/index.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/lib/view.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/common.js">
+      <publishTime>10/29/2019 20:25:56</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/console.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/contlist.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/forum.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/im.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/message.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/sample.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/senior.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/set.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/user.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/useradmin.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/modules/workorder.js">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/admin.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/login.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/bg-none.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/layui-logo.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/logo-black.png">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/logo.png">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/template/character.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/template/huge.jpg">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/res/template/portrait.png">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/style/template.css">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/layim/demo.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/system/about.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/system/get.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/system/more.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/system/theme.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/system/说明.txt">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/layuiadmin/tpl/说明.txt">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/comment.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/contform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/listform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/tags.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/content/tagsform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/forum/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/forum/listform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/forum/replys.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/forum/replysform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/mall/category.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/mall/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/mall/specs.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/message/detail.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/message/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/workorder/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/workorder/listform.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/app/说明.txt">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/anim/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/auxiliar/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/badge/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/button/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/carousel/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/code/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/colorpicker/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/flow/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/form/element.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/form/group.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/all.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/mobile-pc.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/mobile.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/speed-dial.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/grid/stack.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laydate/demo1.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laydate/demo2.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laydate/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laydate/special-demo.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laydate/theme.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/layer/list.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/layer/special-demo.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/layer/theme.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laypage/demo1.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laypage/demo2.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laypage/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/laytpl/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/nav/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/panel/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/progress/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/rate/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/slider/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/auto.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/cellEdit.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/cellEvent.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/checkbox.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/data.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/fixed.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/form.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/height.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/index.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/initSort.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/onrow.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/operate.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/page.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/parseData.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/radio.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/reload.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/resetPage.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/simple.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/static.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/style.html">
+      <publishTime>10/24/2019 14:05:46</publishTime>
+    </File>
+    <File Include="dist/views/component/table/thead.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/table/toolbar.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/table/tostatic.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/table/totalRow.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/tabs/index.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/temp.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/timeline/index.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/upload/demo1.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/upload/demo2.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/upload/index.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/util/index.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/component/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/home/console.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/home/homepage1.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/home/homepage2.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/iframe/layer/iframe.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/index.html">
+      <publishTime>10/29/2019 19:17:02</publishTime>
+    </File>
+    <File Include="dist/views/senior/echarts/bar.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/senior/echarts/line.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/senior/echarts/map.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/senior/im/index.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/senior/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/set/system/email.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/set/system/website.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/set/user/info.html">
+      <publishTime>11/01/2019 20:00:30</publishTime>
+    </File>
+    <File Include="dist/views/set/user/password.html">
+      <publishTime>11/01/2019 20:18:05</publishTime>
+    </File>
+    <File Include="dist/views/set/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/system/about.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/system/get.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/system/more.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/system/theme.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/system/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/addresslist.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/caller.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/goodslist.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/msgboard.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/personalpage.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/search.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/temp.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/tips/404.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/tips/error.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/template/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/administrators/adminform.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/administrators/list.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/administrators/role.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/administrators/roleform.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/forget.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/login.html">
+      <publishTime>11/01/2019 20:37:20</publishTime>
+    </File>
+    <File Include="dist/views/user/reg.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/user/list.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/user/userform.html">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="dist/views/user/说明.txt">
+      <publishTime>10/24/2019 14:05:47</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>10/16/2019 21:08:18</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/16/2019 21:08:17</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>10/16/2019 21:08:13</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/css/H-ui.admin.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/css/H-ui.login.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/css/style.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/0.jpg">
+      <publishTime>11/04/2019 19:48:09</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/20141212231001-7761ff60.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/54587511eb6db.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/6c69d196042f42f2a756dcc77093e4d1_th.jpg">
+      <publishTime>11/04/2019 19:48:41</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/admin-login-bg.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/admin-loginform-bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/cn.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/loading.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/logo.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/Member-loginImage.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/tima.jpg">
+      <publishTime>11/04/2019 19:51:20</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/timg.jpg">
+      <publishTime>11/04/2019 19:53:10</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/timq.jpg">
+      <publishTime>11/04/2019 19:52:37</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/tooopen_sy_196835567584.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui.admin/images/um.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/css/H-ui.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/css/H-ui.ie.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/css/H-ui.min.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/css/H-ui.reset.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/css/layer.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/js/H-ui.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/js/H-ui.min.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/js/jquery.min.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/h-ui/js/layer.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/layer/2.4/layer.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/layer/2.4/skin/layer.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/urlimages/2019-11-06/FLAMING MOUNTAIN.JPG">
+      <publishTime>11/06/2019 20:49:21</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/anchor/anchor.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/attachment.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/attachment.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/attachment.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_chm.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_default.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_doc.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_exe.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_jpg.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_mp3.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_mv.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_pdf.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_ppt.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_psd.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_rar.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_txt.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/fileTypeImages/icon_xls.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/alignicon.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/alignicon.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/file-icons.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/file-icons.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/icons.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/icons.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/image.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/progress.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/success.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/attachment/images/success.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/background/background.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/background/background.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/background/background.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/background/images/bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/background/images/success.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/chart.config.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/charts.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/charts.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/charts.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts0.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts1.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts2.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts3.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts4.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/charts/images/charts5.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/emotion.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/emotion.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/emotion.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/0.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/bface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/cface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/fface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/jxface2.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/neweditor-tab-bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/tface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/wface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/emotion/images/yface.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/gmap/gmap.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/help/help.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/help/help.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/help/help.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/image.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/image.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/image.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/alignicon.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/icons.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/icons.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/image.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/progress.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/success.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/image/images/success.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/insertframe/insertframe.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/internal.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/link/link.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/map/map.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/map/show.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/music/music.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/music/music.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/music/music.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/preview/preview.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/addimg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/brush.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/delimg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/delimgH.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/empty.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/emptyH.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/eraser.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/redo.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/redoH.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/scale.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/scaleH.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/size.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/undo.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/images/undoH.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/scrawl.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/scrawl.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/scrawl/scrawl.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/searchreplace/searchreplace.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/searchreplace/searchreplace.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/snapscreen/snapscreen.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/spechars/spechars.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/spechars/spechars.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/dragicon.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/edittable.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/edittable.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/edittable.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/edittd.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/table/edittip.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/config.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/bg.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/pre0.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/pre1.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/pre2.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/pre3.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/images/pre4.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/template.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/template.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/template/template.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/bg.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/center_focus.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/file-icons.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/file-icons.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/icons.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/icons.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/image.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/left_focus.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/none_focus.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/progress.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/right_focus.jpg">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/success.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/images/success.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/video.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/video.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/video/video.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/webapp/webapp.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/wordimage/fClipboard_ueditor.swf">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/wordimage/imageUploader.swf">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/wordimage/tangram.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/wordimage/wordimage.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/dialogs/wordimage/wordimage.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/index.html">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/config.json">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/controller.jsp">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/lib/commons-codec-1.9.jar">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/lib/commons-fileupload-1.3.1.jar">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/lib/commons-io-2.4.jar">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/lib/json.jar">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/jsp/lib/ueditor-1.1.2.jar">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/en.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/addimage.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/alldeletebtnhoverskin.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/alldeletebtnupskin.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/background.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/button.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/copy.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/deletedisable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/deleteenable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/listbackground.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/localimage.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/music.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/rotateleftdisable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/rotateleftenable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/rotaterightdisable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/rotaterightenable.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/en/images/upload.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/zh-cn/images/copy.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/zh-cn/images/localimage.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/zh-cn/images/music.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/zh-cn/images/upload.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/lang/zh-cn/zh-cn.js">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/css/ueditor.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/css/ueditor.min.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/dialogbase.css">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/anchor.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/arrow.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/arrow_down.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/arrow_up.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/button-bg.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/cancelbutton.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/charts.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/cursor_h.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/cursor_h.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/cursor_v.gif">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/cursor_v.png">
+      <publishTime>10/24/2019 14:13:22</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/dialog-title-bg.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/filescan.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/highlighted.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/icons-all.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/icons.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/icons.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/loaderror.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/loading.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/lock.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/neweditor-tab-bg.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/pagebreak.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/scale.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/sortable.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/spacer.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/sparator_v.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/table-cell-align.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/tangram-colorpicker.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/toolbar_bg.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/unhighlighted.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/upload.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/videologo.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/word.gif">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/default/images/wordpaste.png">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/themes/iframe.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/codemirror/codemirror.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/codemirror/codemirror.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/mootools-adapter.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/mootools-adapter.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/prototype-adapter.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/prototype-adapter.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/standalone-framework.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/adapters/standalone-framework.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/highcharts-more.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/highcharts-more.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/highcharts.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/highcharts.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/annotations.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/annotations.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/canvas-tools.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/canvas-tools.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/data.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/data.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/drilldown.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/drilldown.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/exporting.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/exporting.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/funnel.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/funnel.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/heatmap.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/heatmap.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/map.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/map.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/no-data-to-display.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/modules/no-data-to-display.src.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/themes/dark-blue.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/themes/dark-green.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/themes/gray.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/themes/grid.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/highcharts/themes/skies.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/jquery-1.10.2.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/jquery-1.10.2.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/jquery-1.10.2.min.map">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/snapscreen/UEditorSnapscreen.exe">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/SyntaxHighlighter/shCore.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/SyntaxHighlighter/shCoreDefault.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/font/vjs.eot">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/font/vjs.svg">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/font/vjs.ttf">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/font/vjs.woff">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/video-js.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/video-js.min.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/video-js.swf">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/video.dev.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/video-js/video.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/Uploader.swf">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.css">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.custom.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.custom.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.flashonly.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.flashonly.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.html5only.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.html5only.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.withoutimage.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/webuploader/webuploader.withoutimage.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/xss.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/zeroclipboard/ZeroClipboard.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/zeroclipboard/ZeroClipboard.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/third-party/zeroclipboard/ZeroClipboard.swf">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/ueditor.all.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/ueditor.all.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/ueditor.config.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/ueditor.parse.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="static/utf8-jsp/ueditor.parse.min.js">
+      <publishTime>10/24/2019 14:13:23</publishTime>
+    </File>
+    <File Include="Views/Finance/FinanceIndex.cshtml">
+      <publishTime>11/07/2019 14:37:35</publishTime>
+    </File>
+    <File Include="Views/Finance/MoneyIndex.cshtml">
+      <publishTime>11/04/2019 21:00:19</publishTime>
+    </File>
+    <File Include="Views/Login/Login.cshtml">
+      <publishTime>11/03/2019 19:19:50</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayouFather.cshtml">
+      <publishTime>11/03/2019 19:58:35</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/06/2019 20:53:41</publishTime>
+    </File>
+    <File Include="Views/User/Admin.cshtml">
+      <publishTime>11/07/2019 14:33:50</publishTime>
+    </File>
+    <File Include="Views/User/Homeindex.cshtml">
+      <publishTime>11/03/2019 20:01:55</publishTime>
+    </File>
+    <File Include="Views/User/Onepage.cshtml">
+      <publishTime>11/06/2019 20:52:45</publishTime>
+    </File>
+    <File Include="Views/User/UserIndex.cshtml">
+      <publishTime>11/07/2019 14:31:50</publishTime>
+    </File>
+    <File Include="Views/User/UserPass.cshtml">
+      <publishTime>11/02/2019 02:31:18</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/16/2019 21:08:17</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/10/2019 20:53:27</publishTime>
+    </File>
+    <File Include="Yangzm.ashx">
+      <publishTime>10/16/2019 21:08:22</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

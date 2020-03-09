@@ -1,0 +1,9 @@
+
+----------------------application startup--------------------------
+
+ ----------------------application shutdown--------------------------
+
+----------------------application startup--------------------------
+2020-02-24 19:01:35,741 [52] INFO  TradingPlatform.Common.Logger - (122)  Server Started 20161031...
+
+ ----------------------application shutdown--------------------------

@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBTset.Web", "TradingPlatform\TBTset.Web.csproj", "{E32A98DC-5394-4E79-A789-0830077135E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBTset.Controllers", "TradingPlatform.Controllers\TBTset.Controllers.csproj", "{FBDDE36E-3BDC-4A18-9A9B-746F8351D6C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{4A8B5666-5AA1-4E8E-AD6B-C5176417CE52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingPlatform.IService", "TradingPlatform.IService\TradingPlatform.IService.csproj", "{E951439C-F86D-4EE5-A956-15BC2E87E9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingPlatform.Service", "TradingPlatform.Service\TradingPlatform.Service.csproj", "{CA60FC29-95B9-4ADB-AF74-96C290902A50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBTset.Model", "TradingPlatform.Model\TBTset.Model.csproj", "{F71420A2-12B6-4BA7-AA9F-51AD8AF5DB20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBTset.Common", "TradingPlatform.Common\TBTset.Common.csproj", "{FA349983-18CA-4E81-86A7-AD5DBD28682F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E32A98DC-5394-4E79-A789-0830077135E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32A98DC-5394-4E79-A789-0830077135E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32A98DC-5394-4E79-A789-0830077135E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32A98DC-5394-4E79-A789-0830077135E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBDDE36E-3BDC-4A18-9A9B-746F8351D6C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDDE36E-3BDC-4A18-9A9B-746F8351D6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDDE36E-3BDC-4A18-9A9B-746F8351D6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDDE36E-3BDC-4A18-9A9B-746F8351D6C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E951439C-F86D-4EE5-A956-15BC2E87E9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E951439C-F86D-4EE5-A956-15BC2E87E9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E951439C-F86D-4EE5-A956-15BC2E87E9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E951439C-F86D-4EE5-A956-15BC2E87E9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA60FC29-95B9-4ADB-AF74-96C290902A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA60FC29-95B9-4ADB-AF74-96C290902A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA60FC29-95B9-4ADB-AF74-96C290902A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA60FC29-95B9-4ADB-AF74-96C290902A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71420A2-12B6-4BA7-AA9F-51AD8AF5DB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71420A2-12B6-4BA7-AA9F-51AD8AF5DB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71420A2-12B6-4BA7-AA9F-51AD8AF5DB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71420A2-12B6-4BA7-AA9F-51AD8AF5DB20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA349983-18CA-4E81-86A7-AD5DBD28682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA349983-18CA-4E81-86A7-AD5DBD28682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA349983-18CA-4E81-86A7-AD5DBD28682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA349983-18CA-4E81-86A7-AD5DBD28682F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E951439C-F86D-4EE5-A956-15BC2E87E9D5} = {4A8B5666-5AA1-4E8E-AD6B-C5176417CE52}
+		{CA60FC29-95B9-4ADB-AF74-96C290902A50} = {4A8B5666-5AA1-4E8E-AD6B-C5176417CE52}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05F29ABA-B3D8-4555-A2E1-18F651273735}
+	EndGlobalSection
+EndGlobal

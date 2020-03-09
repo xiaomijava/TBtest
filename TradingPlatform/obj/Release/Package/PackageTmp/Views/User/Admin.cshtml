@@ -1,0 +1,548 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayouFather.cshtml";
+}
+<div id="app" class="main-content-inner">
+    <div class="page-content">
+        <div class="search-self" style="margin:2em">
+            会员名称: <el-input v-model="search.User_Name" placeholder="请输入会员名称" style="width:160px"></el-input>&nbsp;&nbsp;
+            会员账号: <el-input v-model="search.User_Number" placeholder="请输入会员账号" style="width:160px"></el-input>&nbsp;&nbsp;
+            会员昵称: <el-input v-model="search.User_NickName" placeholder="请输入会员昵称" style="width:160px"></el-input>&nbsp;&nbsp;
+            会员qq: <el-input v-model="search.User_QQ" placeholder="请输入会员qq" style="width:160px"></el-input>&nbsp;&nbsp;
+            开始时间: <el-date-picker v-model="search.CreateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker><br /><br />
+            结束时间: <el-date-picker v-model="search.UpdateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker>&nbsp;&nbsp;
+            <button class="layui-btn layui-btn-radius"  @@click="searchMethod">搜索</button>
+            <button class="layui-btn layui-btn-normal layui-btn-radius" @@click="insertMethod">添加</button>
+            <button class="layui-btn layui-btn-warm layui-btn-radius" @@click="resetMethod">重置</button>
+            <button class="layui-btn layui-btn-danger layui-btn-radius" @@click="deleteMethod">删除</button>
+        </div>
+        <div class="hr hr-18 dotted hr-double"></div>
+
+        <div class="el-table-self">
+            <el-table stripe ref="multipleTable"
+                      :data="bondsAllList"
+                      :default-expand-all="true"
+                      @@selection-change="handleSelectionChange"
+                      border
+                      style="width:100%"
+                      @@row-dblclick="updateMethods">
+                <el-table-column type="selection" width="55"> </el-table-column>
+                <el-table-column property="Id" sortable label="ID" align="center" width="75"></el-table-column>
+                <el-table-column property="User_Name" sortable label="会员名称" align="center"></el-table-column>
+                <el-table-column property="User_Number" label="会员账号" align="center"></el-table-column>
+                <el-table-column property="User_Url" label="会员头像" align="center">
+                    <template slot-scope="scope">
+                       <img :src="scope.row.User_Url" width="60" height="40"/>
+                    </template>
+                </el-table-column>
+                <el-table-column property="User_Sex" label="会员性别" :formatter="Transex" align="center"></el-table-column>
+                <el-table-column property="User_NickName" label="会员昵称" align="center"></el-table-column>
+                <el-table-column property="User_QQ" label="会员qq" align="center"></el-table-column>
+                <el-table-column property="User_Email" label="邮箱地址" align="center"></el-table-column>
+            </el-table>
+            <div class="pagination-footer">
+                <el-pagination @@size-change="handleSizeChange1"
+                               @@current-change="handleCurrentChange1"
+                               :current-page="currentPage1"
+                               :page-sizes="[5, 10, 15, 20]"
+                               :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                               :total="total1">
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+
+    @*弹出框*@
+    <el-dialog :title="titlecontent" :visible.sync="dialogFormVisible">
+        <el-form :model="form" :rules="rules" ref="form">
+            <el-form-item label="会员名称" :label-width="formLabelWidth" prop="User_Name">
+                <el-input v-model="form.User_Name" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="会员账号" :label-width="formLabelWidth" prop="User_Number">
+                <el-input v-model="form.User_Number" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="一级密码" :label-width="formLabelWidth" prop="U_1st_Password">
+                <el-input v-model="form.U_1st_Password" show-password autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="二级密码" :label-width="formLabelWidth" prop="U_2st_Password">
+                <el-input v-model="form.U_2st_Password" show-password autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="三级密码" :label-width="formLabelWidth" prop="U_3st_Password">
+                <el-input v-model="form.U_3st_Password" show-password autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证号码" :label-width="formLabelWidth" prop="U_Passport">
+                <el-input v-model="form.U_Passport" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="手机号码" :label-width="formLabelWidth" prop="Bindphone">
+                <el-input v-model="form.Bindphone" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="性别" :label-width="formLabelWidth" prop="User_Sex">
+                <template>
+                    <el-radio v-model="form.User_Sex" label="0">男</el-radio>
+                    <el-radio v-model="form.User_Sex" label="1">女</el-radio>
+                </template>
+            </el-form-item>
+            <el-form-item label="会员昵称" :label-width="formLabelWidth" prop="User_NickName">
+                <el-input v-model="form.User_NickName" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="qq号码" :label-width="formLabelWidth" prop="User_QQ">
+                <el-input v-model="form.User_QQ" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱地址" :label-width="formLabelWidth" prop="User_Email">
+                <el-input v-model="form.User_Email" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="角色" :label-width="formLabelWidth">
+                <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @@change="handleCheckAllChange">全选</el-checkbox>
+                <el-checkbox-group v-model="checkedCities" @@change="handleCheckedCitiesChange">
+                    <el-checkbox v-for="city in cities" :label="city.Id" :key="city.Id">{{city.Name}}</el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @@click="cancelDialog()">取 消</el-button>
+            <el-button type="primary" @@click="addMethod('form')">确定</el-button>
+        </div>
+    </el-dialog>
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script src="~/assets/js/jquery.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data() {
+            var YanZhen = (rule, value, callback) => {
+                if (value == "") {
+                    callback(new Error('请输入身份证号码'));
+                }
+                else if (value.toString().length != 18) {
+                    callback(new Error('身份证号码长度为18个字符'))
+                }
+                else if (!checkCode(value)) {
+                    callback(new Error('身份证号码格式错误'))
+                }
+                else {
+                    callback();
+                }
+            };
+            var validatePass = (rule, value, callback) => {
+                if (!value) {
+                    callback(new Error('请输入手机号码！'));
+                } else if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(value))) {
+                    callback(new Error('手机号码格式不正确！'))
+                } else {
+                    callback();
+                }
+            };
+            return {
+                checkAll: false,
+                isIndeterminate: true,
+                checkedCities: [],
+                cities: [],//角色数据
+                value: '',
+                titlecontent: '添加用户信息',
+                newsid: '',
+                total1: 100,            //数据总数
+                currentPage1: 1,        //当前页
+                pageSize: 10,           //当前页数
+                search: {               //搜索条件
+                    User_Name: '',
+                    User_Number: '',
+                    User_NickName: '',
+                    User_QQ: '',
+                    CreateTime: '',
+                    UpdateTime: ''
+                },
+                form: {                 //弹出框表单数据
+                    User_Name: '',
+                    User_Number: '',
+                    U_1st_Password: '',
+                    U_2st_Password: '',
+                    U_3st_Password: '',
+                    U_Passport: '',
+                    User_Sex: '0',
+                    User_NickName: '',
+                    User_QQ: '',
+                    User_Email: '',
+                    Bindphone: '',
+                    User_Url: '',
+                  
+                },
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now();
+                    },
+                    shortcuts: [{
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
+                rules: {
+                    User_Name: [
+                        { required: true, message: '请输入会员名称', trigger: 'blur' },
+                        { min: 1, max: 10, message: '长度在 10 个字符之内', trigger: 'blur' }
+                    ],
+                    User_Number: [
+                        { required: true, message: '请输入会员账号', trigger: 'blur' },
+                        { min: 1, max: 50, message: '长度不超过10个字符', trigger: 'blur' }
+                    ],
+                    U_1st_Password: [
+                        { required: true, message: '请输入一级密码', trigger: 'blur' },
+                        { min: 1, max: 40, message: '长度不超过40个字符', trigger: 'blur' }
+                    ],
+                    U_2st_Password: [
+                        { required: true, message: '请输入二级密码', trigger: 'blur' },
+                        { min: 1, max: 40, message: '长度不超过40个字符', trigger: 'blur' }
+                    ],
+                    U_3st_Password: [
+                        { required: true, message: '请输入三级密码', trigger: 'blur' },
+                        { min: 1, max: 40, message: '长度不超过40个字符', trigger: 'blur' }
+                    ],
+                    U_Passport: [
+                        { required: true, validator: YanZhen, trigger: 'blur' },
+                    ],
+                    User_Sex: [
+                        { required: true, message: '请选择性别', trigger: 'blur' },
+                        { min: 1, max: 20, message: '长度不超过20个字符', trigger: 'blur' }
+                    ],
+                    Bindphone: [
+                        { required: true, validator: validatePass, trigger: 'blur' },
+                    ]
+
+                },
+                formLabelWidth: '120px',    //label宽度
+                multipleSelection: [],      //表格选中数据
+                dialogFormVisible: false,    //弹出框是否显示
+                bondsAllList: null      //表格绑定数据
+            }
+        },
+        mounted: function () {
+            this.GetMenusData();
+            this.GetByRoleList();
+        },
+        methods: {
+            //获取角色数据
+            GetByRoleList: function () {
+                var _this = this;
+                axios.get('/Role/GetByRoleList'
+                ).then(function (response) {
+                    if (response.data.data != null) {
+                        _this.cities = response.data.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            },
+            handleCheckAllChange(val) {
+                var sz = new Array();
+                for (var i = 0; i < this.cities.length; i++) {
+                    sz[i] = this.cities[i].Id;
+                }
+                this.checkedCities = val ? sz : [];
+                this.isIndeterminate = false;
+            },
+            handleCheckedCitiesChange(value) {
+                let checkedCount = value.length;
+                this.checkAll = checkedCount === this.cities.length;
+                this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+            },
+            Transex: function (row, column, cellValue, index) {
+                return cellValue == 0 ? "男" : "女";
+            },
+            //根据条件搜索
+            searchMethod: function () {
+                app.GetMenusData();
+            },
+
+            //添加
+            insertMethod: function () {
+
+                this.titlecontent = "添加会员信息";
+                this.dialogFormVisible = true;
+                this.checkedCities = [];
+                app.emptyMethod();
+            },
+            //删除
+            deleteMethod: function () {
+                var _this = this;
+                if (this.multipleSelection.length == 0) {
+                    alert("请勾选你要删除的数据！");
+                    return;
+                }
+                this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('/User/deleteUser', this.multipleSelection)
+                        .then(function (response) {
+
+                            if (response.data.result) {
+                                app.GetMenusData();//刷新
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'error'
+                                });
+                            }
+
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+
+
+                })
+            },
+            //关闭弹框
+            cancelDialog: function () {
+                app.emptyMethod();
+                this.dialogFormVisible = false;
+            },
+            //清空
+            emptyMethod: function () {
+                this.$refs['form'].resetFields();
+                this.form.User_Name = '';
+                this.form.User_Number = '';
+                this.form.U_1st_Password = '';
+                this.form.U_2st_Password = '';
+                this.form.U_3st_Password = '';
+                this.form.U_Passport = '';
+                this.form.User_Sex = '0';
+                this.form.User_NickName = '';
+                this.form.User_QQ = '';
+                this.form.User_Email = '';
+                this.form.Bindphone = '';
+
+            },
+            //重置
+            resetMethod: function () {
+                this.search.User_Name = '';
+                this.search.User_Number = '';
+                this.search.User_NickName = '';
+                this.search.User_QQ = '';
+                this.search.CreateTime = '';
+                this.search.UpdateTime = '';
+                app.GetMenusData();
+            },
+            //检查结束日期
+            CheckEndTime: function () {
+                var _this = this;
+                if (_this.search.CreateTime == null || _this.search.UpdateTime == null)
+                    return;
+                if (new Date(_this.search.CreateTime).getTime() >= new Date(_this.search.UpdateTime).getTime()) {
+                    _this.$message({
+                        type: 'info',
+                        message: '结束时间不能小于或等于开始时间'
+                    });
+                    _this.search.UpdateTime = '';
+                }
+            },
+            //添加菜单
+            addMethod: function (formName) {
+              
+                var _this = this;
+                var po = '/User/addUser';
+                var news = {
+                    User_Name: _this.form.User_Name,
+                    User_Number: _this.form.User_Number,
+                    U_1st_Password: _this.form.U_1st_Password,
+                    U_2st_Password: _this.form.U_2st_Password,
+                    U_3st_Password: _this.form.U_3st_Password,
+                    U_Passport: _this.form.U_Passport,
+                    User_Sex: _this.form.User_Sex,
+                    User_NickName: _this.form.User_NickName,
+                    User_QQ: _this.form.User_QQ,
+                    User_Email: _this.form.User_Email,
+                    Bindphone: _this.form.Bindphone,
+                    RoleIds: _this.checkedCities.toString(),
+                };
+                if (_this.titlecontent == "修改会员信息") {
+                    po = '/User/updateUser';
+                    news.Id = newsid;
+
+                }
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if (_this.checkedCities.length == 0) {
+                            _this.$message({
+                                message:'请至少绑定一个角色！',
+                                type: 'error'
+                            });
+                            return;
+                        }
+                        axios.post(po, news)
+                            .then(function (response) {
+
+                                if (response.data.result) {
+                                    _this.dialogFormVisible = false;//关闭弹出框
+                                    app.GetMenusData();//刷新
+                                    app.emptyMethod();//清空
+                                    _this.$message({
+                                        message: response.data.message,
+                                        type: 'success'
+                                    });
+                                } else {
+                                    _this.$message({
+                                        message: response.data.message,
+                                        type: 'error'
+                                    });
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
+                    } else {
+                        return false;
+                    }
+                })
+            }, //获取菜单
+            GetMenusData: function () {
+                var _this = this;
+
+                var param = {
+                    pageIndex: _this.currentPage1,
+                    pageSize: _this.pageSize,
+                    orderby: _this.orderby,
+                    IsAsc: _this.isAsc,
+                }
+
+                var search = _this.search;
+
+                $.ajax({
+                    url: '/User/GetUserByPage',
+                    type: 'post',//换成 get 无效
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        param: param,
+                        search: search
+                    }),
+                    success: function (response) {
+                        _this.bondsAllList = response.responseData.data;
+                        _this.total1 = response.total;
+                    }
+                });
+
+            },
+
+            //修改
+            updateMethods: function (row, x, y) {
+
+                this.titlecontent = "修改会员信息";
+                this.dialogFormVisible = true;
+                this.form.User_Name = row.User_Name;
+                this.form.User_Number = row.User_Number;
+                this.form.U_1st_Password = row.U_1st_Password;
+                this.form.U_2st_Password = row.U_2st_Password;
+                this.form.U_3st_Password = row.U_3st_Password;
+                this.form.U_Passport = row.U_Passport;
+                this.form.User_Sex = row.User_Sex.toString();
+                this.form.User_NickName = row.User_NickName;
+                this.form.User_QQ = row.User_QQ;
+                this.form.User_Email = row.User_Email;
+                this.form.Bindphone = row.Bindphone;
+                newsid = row.Id;
+
+                //根据id去查找角色id
+                var _this = this;
+                axios.get('/Role/GetByRoleList?id=' + row.Id
+                ).then(function (response) {
+                    if (response.data.data != null) {
+                        _this.checkedCities = response.data.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            },
+            filterHandler(value, row, column) {
+                const property = column['property'];
+                return row[property] === value;
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                console.log(val);
+            },
+            handleSizeChange1: function (pageSize) { // 每页条数切换
+                var _this = this;
+                _this.pageSize = pageSize
+                _this.handleCurrentChange1(this.currentPage1);
+            },
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage
+                _this.currentChangePage(this.bondsAllList, currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(list, currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetMenusData();
+            },
+        }
+    });
+
+   
+    //验证身份证号码
+    var checkCode = function (val) {
+        var p = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+        var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+        var parity = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2];
+        var code = val.substring(17);
+        if (p.test(val)) {
+            var sum = 0;
+            for (var i = 0; i < 17; i++) {
+                sum += val[i] * factor[i];
+            }
+            if (parity[sum % 11] == code.toUpperCase()) {
+                return true;
+            }
+        }
+        return false;
+    }
+  
+</script>

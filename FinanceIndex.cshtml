@@ -1,0 +1,125 @@
+﻿@{
+    Layout = "~/Views/OldMemberUI/Shared/_OldMemberLayout.cshtml";
+}
+<div id="app" class="main-content-inner">
+    <div class="breadcrumbs ace-save-state">
+        
+    </div>
+    <div class="page-content">
+        
+        <div class="hr hr-18 dotted hr-double"></div>
+        <el-table ref="multipleTable"
+                  :data="bondsAllList"
+                  :default-expand-all="true"
+                  border
+                  style="width:100%">
+            <el-table-column property="CreateTime" :formatter="FormatTime" label="变动时间" align="center"></el-table-column>
+            <el-table-column label="可用余额USDT" align="center">
+                <template slot-scope="scope">
+                    <span style="color:#1eae58;font-weight:bold;" v-if="scope.row.TypeID==1">+{{scope.row.Amount}}</span>
+                    <span style="color:#FF6235;font-weight:bold;" v-if="scope.row.TypeID==4">-{{scope.row.Amount}}</span>
+                    <span style="color:black;font-weight:bold;" v-if="scope.row.TypeID!=1&&scope.row.TypeID!=4">-</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="冻结金额USDT" align="center">
+                <template slot-scope="scope">
+                    <span style="color:#1eae58;font-weight:bold;" v-if="scope.row.TypeID==2">+{{scope.row.Amount}}</span>
+                    <span style="color:#FF6235;font-weight:bold;" v-if="scope.row.TypeID==3">-{{scope.row.Amount}}</span>
+                    <span style="color:black;font-weight:bold;" v-if="scope.row.TypeID!=2&&scope.row.TypeID!=3">-</span>
+                </template>
+            </el-table-column>
+            <el-table-column property="ChangeContent" label="变动内容" align="center"></el-table-column>
+        </el-table>
+        <div class="pagination-footer">
+            <el-pagination @@size-change="handleSizeChange1"
+                           @@current-change="handleCurrentChange1"
+                           :current-page="currentPage1"
+                           :page-sizes="[5, 10, 20, 50]"
+                           :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                           :total="total1">
+            </el-pagination>
+        </div>
+    </div>
+
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            total1: 100,            //数据总数
+            currentPage1: 1,        //当前页
+            pageSize: 5,           //当前页数
+            orderby: 'CreateTime',                //排序字段
+            isAsc: false,           //排序顺序
+            formLabelWidth: '120px',    //label宽度
+            bondsAllList: []          //表格绑定数据
+           
+        },
+        mounted: function () {
+            this.GetFinancesData();
+        },
+        filters: {
+
+        },
+        methods: {
+            //格式化表格时间
+            FormatTime: function (row, column, cellValue, index) {
+                if (cellValue == null || cellValue == "")
+                    return "";
+                var date = new Date(parseInt(cellValue.replace("/Date(", "").replace(")/", ""), 10));
+                var Y = date.getFullYear() + '-';
+                var M = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) + '-' : date.getMonth() + 1 + '-';
+                var D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+                var h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+                var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+                var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+                return M + D + " " + h + m + s;
+            },
+            //获取订单信息
+            GetFinancesData: function () {
+                var _this = this;
+
+                axios.get('/MemberFinance/GetFinanceData'
+                    , {
+                        params: {
+                            pageIndex: _this.currentPage1,
+                            pageSize: _this.pageSize,
+                            orderby: _this.orderby,
+                            IsAsc: _this.isAsc,
+                        }
+                    }
+                ).then(function (response) {
+                    console.log(response);
+                    _this.bondsAllList = response.data.table;
+                    _this.total1 = response.data.total;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            // 每页条数切换
+            handleSizeChange1: function (pageSize) {
+                var _this = this;
+                _this.pageSize = pageSize;
+                _this.handleCurrentChange1(_this.currentPage1);
+            },
+            //当前页发生改变
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.currentChangePage(currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetFinancesData();
+            },
+        }
+    });
+</script>

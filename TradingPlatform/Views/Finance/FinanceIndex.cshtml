@@ -1,0 +1,262 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayouFather.cshtml";
+}
+
+<div id="app" class="main-content-inner">
+    <div class="page-content">
+        <div class="search-self" style="margin:2em">
+            会员编号: <el-input v-model="search.User_Number" placeholder="请输入会员编号" style="width:160px"></el-input>&nbsp;&nbsp;
+            开始时间: <el-date-picker v-model="search.CreateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker>
+            结束时间: <el-date-picker v-model="search.UpdateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker>&nbsp;&nbsp;
+            <button class="layui-btn layui-btn-radius" @@click="searchMethod">搜索</button>
+            @*<button class="layui-btn layui-btn-normal layui-btn-radius" @@click="insertMethod">添加</button>*@
+            <button class="layui-btn layui-btn-warm layui-btn-radius" @@click="resetMethod">重置</button>
+            <button class="layui-btn layui-btn-normal layui-btn-radius" @@click="ImportMethod">导出数据</button>
+        </div>
+        <div style="float:right;margin-right:1em;font-size:20px;color:green">总利息：@ViewBag.sum</div>
+
+        <div class="el-table-self">
+            <el-table stripe ref="multipleTable"
+                      :data="bondsAllList"
+                      :default-expand-all="true"
+                      @@selection-change="handleSelectionChange"
+                      border
+                      style="width:100%">
+                <el-table-column type="selection" width="55"> </el-table-column>
+                <el-table-column property="Id" sortable label="ID" align="center" width="75"></el-table-column>
+                <el-table-column property="User_Number" label="会员编号" align="center"></el-table-column>
+                <el-table-column property="Principal" label="本金" align="center"></el-table-column>
+                <el-table-column property="Amount" label="利息" align="center"></el-table-column>
+                <el-table-column property="CreateTime" label="生成效益时间" :formatter="FormatTime" align="center"></el-table-column>
+            </el-table>
+            <div class="pagination-footer">
+                <el-pagination @@size-change="handleSizeChange1"
+                               @@current-change="handleCurrentChange1"
+                               :current-page="currentPage1"
+                               :page-sizes="[5, 10, 15, 20]"
+                               :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                               :total="total1">
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script src="~/assets/js/jquery.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                total1: 100,            //数据总数
+                currentPage1: 1,        //当前页
+                pageSize: 10,           //当前页数
+                search: {               //搜索条件
+                    User_Number: '',
+                    CreateTime: '',
+                    UpdateTime: ''
+                },
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now();
+                    },
+                    shortcuts: [{
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
+                formLabelWidth: '120px',    //label宽度
+                multipleSelection: [],      //表格选中数据
+                bondsAllList: null      //表格绑定数据
+            }
+        },
+        mounted: function () {
+            this.GetMenusData();
+        },
+        methods: {
+            //数据导出
+            ImportMethod: function () {
+                var _this = this;
+                if (_this.search.CreateTime != null || _this.search.CreateTime != "") {
+                    _this.search.CreateTime = new Date(_this.search.CreateTime).getTime();
+                }
+
+                if (_this.search.UpdateTime != null || _this.search.UpdateTime != "") {
+                    _this.search.UpdateTime = new Date(_this.search.UpdateTime).getTime();
+                }
+
+                this.$confirm('是否要导出当前表格中的数据，是请点击确定按钮，否则请筛选需要导出的数据!', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    window.open("/Finance/DataToExcel?User_Number=" + _this.search.User_Number + "&CreateTime=" + _this.search.CreateTime + "&UpdateTime=" + _this.search.UpdateTime);
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消数据导出'
+                    });
+                })
+
+            },
+
+            //格式化表格时间
+            FormatTime: function (row, column, cellValue, index) {
+                if (cellValue == null || cellValue == "")
+                    return "";
+                return formatTime(parseInt(cellValue.replace("/Date(", "").replace(")/", ""), 10));
+            },
+            //根据条件搜索
+            searchMethod: function () {
+                this.pageIndex = 1;
+                app.GetMenusData();
+            },
+            //删除
+            deleteMethod: function () {
+                var _this = this;
+                if (this.multipleSelection.length == 0) {
+                    alert("请勾选你要删除的数据！");
+                    return;
+                }
+                this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('/User/deleteUser', this.multipleSelection)
+                        .then(function (response) {
+
+                            if (response.data.result) {
+                                app.GetMenusData();//刷新
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'error'
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                })
+            },
+            //重置
+            resetMethod: function () {
+                this.search.User_Number = '';
+                this.search.CreateTime = '';
+                this.search.UpdateTime = '';
+                app.GetMenusData();
+            },
+            //检查结束日期
+            CheckEndTime: function () {
+                var _this = this;
+                if (_this.search.CreateTime == null || _this.search.UpdateTime == null)
+                    return;
+                if (new Date(_this.search.CreateTime).getTime() > new Date(_this.search.UpdateTime).getTime()) {
+                    _this.$message({
+                        type: 'info',
+                        message: '结束时间不能小于开始时间'
+                    });
+                    _this.search.UpdateTime = '';
+                }
+            },
+            //获取菜单
+            GetMenusData: function () {
+                var _this = this;
+
+                var param = {
+                    pageIndex: _this.currentPage1,
+                    pageSize: _this.pageSize,
+                    orderby: _this.orderby,
+                    IsAsc: _this.isAsc,
+                }
+
+                var search = _this.search;
+
+                $.ajax({
+                    url: '/Finance/GetUserByPage',
+                    type: 'post',//换成 get 无效
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        param: param,
+                        search: search
+                    }),
+                    success: function (response) {
+                        _this.bondsAllList = response.responseData.data;
+                        _this.total1 = response.total;
+                    }
+                });
+
+            },
+            filterHandler(value, row, column) {
+                const property = column['property'];
+                return row[property] === value;
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                console.log(val);
+            },
+            handleSizeChange1: function (pageSize) { // 每页条数切换
+                var _this = this;
+                _this.pageSize = pageSize
+                _this.handleCurrentChange1(this.currentPage1);
+            },
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage
+                _this.currentChangePage(this.bondsAllList, currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(list, currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetMenusData();
+            },
+        }
+    });
+
+</script>

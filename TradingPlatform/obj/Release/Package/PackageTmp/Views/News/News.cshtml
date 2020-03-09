@@ -1,0 +1,390 @@
+﻿
+<script src="~/static/utf8-jsp/ueditor.config.js"></script>
+<script src="~/static/utf8-jsp/ueditor.all.min.js"></script>
+<script src="~/static/utf8-jsp/lang/zh-cn/zh-cn.js"></script>
+<style>
+    .breadcrumbs {
+        border-bottom: none;
+        padding: 0;
+    }
+</style>
+<div id="app" class="main-content-inner">
+    <div style="display:none;margin-top:1.5em" id="hei">
+        <el-form :model="form" :rules="rules" ref="form">
+            <el-form-item label="新闻标题" :label-width="formLabelWidth" prop="title">
+                <el-input v-model="form.title" autocomplete="off" style="width:98%"></el-input>
+            </el-form-item>
+            <el-form-item label="是否启用" :label-width="formLabelWidth" prop="isenable">
+                <el-select v-model="form.isenable" placeholder="请选择" autocomplete="off">
+                    <el-option v-for="item in lists"
+                               :label="item.label"
+                               :value="item.value">
+                    </el-option>
+                </el-select>&nbsp;<font color="gray">禁用的新闻不会在会员前台显示</font>
+            </el-form-item>
+
+            <el-form-item label="新闻内容" :label-width="formLabelWidth" prop="content">
+                <textarea id="content" style="margin-right:1em;height:250px" v-model="form.content"></textarea>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer" style="margin-left:46em">
+            <el-button @@click="cancel()">取 消</el-button>
+            <el-button type="primary" @@click="addMethod('form')">确定</el-button>
+        </div>
+    </div>
+    <div id="yin">
+        <div class="breadcrumbs ace-save-state">
+            <div class="page-content">
+                <div class="search-self" style="margin:2em">
+                    新闻标题:<el-input v-model="search.New_Title" placeholder="请输入新闻标题" style="width:160px"></el-input>
+                    开始时间: <el-date-picker v-model="search.CreateTime"
+                                          align="right"
+                                          type="date"
+                                          @@change="CheckEndTime"
+                                          placeholder="选择日期"
+                                          :picker-options="pickerOptions">
+                    </el-date-picker>
+                    结束时间: <el-date-picker v-model="search.UpdateTime"
+                                          align="right"
+                                          type="date"
+                                          @@change="CheckEndTime"
+                                          placeholder="选择日期"
+                                          :picker-options="pickerOptions">
+                    </el-date-picker>&nbsp;&nbsp;
+                    <el-button type="primary" icon="el-icon-search" @@click="searchMethod">搜索</el-button>
+                    <el-button type="primary" icon="el-icon-plus" @@click="insertMethod">添加</el-button>
+                    <el-button type="danger" icon="el-icon-delete" @@click="deleteMethod">删除</el-button>
+                    <el-button type="success" icon="el-icon-edit" @@click="resetMethod">重置</el-button>
+                    @*<el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>*@
+                </div>
+                <div class="hr hr-18 dotted hr-double"></div>
+                <el-table stripe ref="multipleTable"
+                          :data="bondsAllList"
+                          :default-expand-all="true"
+                          @@selection-change="handleSelectionChange"
+                          border
+                          style="width:100%"
+                          @@row-dblclick="updateMethods">
+                    <el-table-column type="selection" width="55" align="center"> </el-table-column>
+                    <el-table-column type="index" sortable label="序号" align="center" width="75"></el-table-column>
+                    <el-table-column property="New_Title" sortable label="新闻标题" align="center"></el-table-column>
+                    <el-table-column property="IsEnable" label="是否启用" align="center">
+                        <template slot-scope="scope">
+                            <span class="table-span span-color-success" v-if="scope.row.IsEnable==true">是</span>
+                            <span class="table-span span-color-default" v-else>否</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column property="CreateTime" label="添加时间" :formatter="FormatTime" :filter-method="filterHandler" align="center"></el-table-column>
+                </el-table>
+                <div class="pagination-footer">
+                    <el-pagination @@size-change="handleSizeChange1"
+                                   @@current-change="handleCurrentChange1"
+                                   :current-page="currentPage1"
+                                   :page-sizes="[20,50,100,200]"
+                                   :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                                   :total="total1">
+                    </el-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script src="~/static/h-ui/js/jquery.min.js"></script>
+<script>
+
+    //实例化编辑器
+    var ue = UE.getEditor('content');
+    const app = new Vue({
+        el: '#app',
+        data: {
+            lists: [{
+                value: true,
+                label: '是'
+            }, {
+                value: false,
+                label: '否'
+            }],
+            value: '',
+            titlecontent: '添加新闻信息',
+            newsid: '',
+            total1: 100,            //数据总数
+            currentPage1: 1,        //当前页
+            pageSize: 20,           //当前页数
+            search: {               //搜索条件
+                New_Title: '',
+                CreateTime: '',
+                UpdateTime: ''
+            },
+            pickerOptions: {
+                disabledDate(time) {
+                    return time.getTime() > Date.now();
+                },
+                shortcuts: [{
+                    text: '今天',
+                    onClick(picker) {
+                        picker.$emit('pick', new Date());
+                    }
+                }, {
+                    text: '昨天',
+                    onClick(picker) {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24);
+                        picker.$emit('pick', date);
+                    }
+                }, {
+                    text: '一周前',
+                    onClick(picker) {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                        picker.$emit('pick', date);
+                    }
+                }]
+            },
+            form: {                 //弹出框表单数据
+                title: '',
+                content: '',
+                isenable: '',
+            },
+            rules: {
+                title: [
+                    { required: true, message: '请输入新闻标题', trigger: 'blur' },
+                    { min: 1, max:40, message: '长度在 40 个字符之内', trigger: 'blur' }
+                ],
+                isenable: [
+                    { required: true, message: '请选择是否启用', trigger: 'blur' },
+
+                ]
+            },
+            formLabelWidth: '120px',    //label宽度
+            multipleSelection: [],      //表格选中数据
+            dialogFormVisible: false,    //弹出框是否显示
+            bondsAllList: null      //表格绑定数据
+        },
+        mounted: function () {
+            this.GetMenusData();
+        },
+        methods: {
+            //格式化表格时间
+            FormatTime: function (row, column, cellValue, index) {
+                if (cellValue == null || cellValue == "")
+                    return "";
+                return formatTime(parseInt(cellValue.replace("/Date(", "").replace(")/", ""), 10));
+            },
+            //根据条件搜索
+            searchMethod: function () {
+                app.GetMenusData();
+            },
+            cancel: function () {
+                $("#hei").hide();
+                $("#yin").show();
+            },
+            //添加
+            insertMethod: function () {
+                this.titlecontent = "添加新闻信息";
+                this.dialogFormVisible = true;
+                app.emptyMethod();
+                $("#hei").show();
+                $("#yin").hide();
+
+            },
+            //重置
+            resetMethod: function () {
+                this.search.CreateTime = '';
+                this.search.UpdateTime = '';
+                this.search.New_Title = '';
+                app.GetMenusData();
+            },
+            //检查结束日期
+            CheckEndTime: function () {
+                var _this = this;
+                if (_this.search.CreateTime == null || _this.search.UpdateTime == null)
+                    return;
+                if (new Date(_this.search.CreateTime).getTime() >= new Date(_this.search.UpdateTime).getTime()) {
+                    _this.$message({
+                        type: 'info',
+                        message: '结束时间不能小于或等于开始时间'
+                    });
+                    _this.search.UpdateTime = '';
+                }
+            },
+            //删除
+            deleteMethod: function () {
+                var _this = this;
+                if (this.multipleSelection.length == 0) {
+                    alert("请勾选你要删除的数据！");
+                    return;
+                }
+                this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('/News/deleteNews', this.multipleSelection)
+                        .then(function (response) {
+                            if (response.data.result) {
+                                app.GetMenusData();
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'error'
+                                });
+                            }
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            //清空
+            emptyMethod: function () {
+                this.$refs['form'].resetFields();
+                this.form.title = '';
+                this.form.isenable = '';
+                this.form.breaks = '';
+                UE.getEditor('content').setContent('');
+            },
+            //添加菜单
+            addMethod: function (formName) {
+
+                if (UE.getEditor('content').getContent() == "") {
+                    alert("新闻内容不能为空！");
+                    return;
+                }
+                var _this = this;
+
+                var po = '/News/addNews';
+                var news = {
+                    New_Title: this.form.title,
+                    New_Content: UE.getEditor('content').getContent(),
+                    IsEnable: this.form.isenable == "是" ? true : this.form.isenable == true ? true : false,
+                };
+                if (this.titlecontent == "修改新闻信息") {
+                    po = '/News/updateNews';
+                    news.id = newsid;
+                }
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        axios.post(po, news)
+                            .then(function (response) {
+                                if (response.data.result) {
+                                    _this.dialogFormVisible = false;//关闭弹出框
+                                    app.GetMenusData();//刷新
+                                    app.emptyMethod();//清空
+                                    $("#hei").hide();
+                                    $("#yin").show();
+                                    _this.$message({
+                                        message: response.data.message,
+                                        type: 'success'
+                                    });
+                                } else {
+                                    _this.$message({
+                                        message: response.data.message,
+                                        type: 'error'
+                                    });
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
+                    } else {
+                        return false;
+                    }
+                })
+            }, //获取菜单
+            GetMenusData: function () {
+                var _this = this;
+
+                var param = {
+                    pageIndex: _this.currentPage1,
+                    pageSize: _this.pageSize,
+                    orderby: _this.orderby,
+                    IsAsc: _this.isAsc
+                };
+                var search = _this.search;
+                $.ajax({
+                    url: '/News/GetNewsByPage',
+                    type: 'post',//换成 get 无效
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        param: param,
+                        search: search
+                    }),
+                    success: function (response) {
+                        console.log(response);
+                        _this.bondsAllList = response.responseData.data;
+                        _this.total1 = response.total;
+                    }
+                });
+            },
+
+            //修改
+            updateMethods: function (row, x, y) {
+                this.$refs['form'].resetFields();
+                this.titlecontent = "修改新闻信息";
+                this.dialogFormVisible = true;
+                this.form.title = row.New_Title;
+                this.form.class = row.New_Class;
+                this.form.isenable = row.IsEnable;
+                this.form.istop = row.IsTop;
+                this.form.breaks = row.Breaks;
+                UE.getEditor('content').setContent(row.New_Content);
+                newsid = row.Id;
+                $("#hei").show();
+                $("#yin").hide();
+            },
+            filterHandler(value, row, column) {
+                const property = column['property'];
+                return row[property] === value;
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                console.log(val);
+            },
+            handleSizeChange1: function (pageSize) { // 每页条数切换
+                var _this = this;
+                _this.pageSize = pageSize
+                _this.handleCurrentChange1(this.currentPage1);
+            },
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage
+                _this.currentChangePage(this.bondsAllList, currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(list, currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetMenusData();
+            },
+        }
+    });
+    //格式化日期
+    function formatTime(value) {
+        var date = new Date(value);
+        var Y = date.getFullYear() + '-';
+        var M = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) + '-' : date.getMonth() + 1 + '-';
+        var D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+        var h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>
+

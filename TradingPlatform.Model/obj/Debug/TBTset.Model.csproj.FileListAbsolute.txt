@@ -1,0 +1,14 @@
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\TradingPlatform.Model.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\TradingPlatform.Model.pdb
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\EntityFramework.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\EntityFramework.xml
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Debug\TBTset.Model.csprojAssemblyReference.cache
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Debug\TBTset.Model.csproj.CopyComplete
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Debug\TradingPlatform.Model.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Debug\TradingPlatform.Model.pdb
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Debug\log4net.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Debug\TBTset.Model.csproj.CoreCompileInputs.cache

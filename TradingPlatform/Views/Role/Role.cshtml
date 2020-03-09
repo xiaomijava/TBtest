@@ -1,0 +1,551 @@
+﻿@*@{
+        Layout = "~/Views/Shared/_Layout_new.cshtml";
+    }*@
+<div id="app" class="main-content-inner">
+    <div id="menus" style="display:none;background-color:white">
+        <el-form>
+            <el-form-item label="菜单权限" :label-width="formLabelWidth">
+                <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @@change="handleCheckAllChange">全选</el-checkbox>
+                <el-checkbox-group v-model="checkedCities" @@change="handleCheckedCitiesChange">
+                    <div v-for="city in cities" style="border-bottom:1px solid Gainsboro">
+                        <el-checkbox style="margin-top:1.5em" :label="city.Id" :key="city.Id" @@change="ResetMenu(city.Id)" border size="small">
+                            {{city.Menu_Name}}
+                        </el-checkbox>
+                        <br />
+                        <div>
+                            <el-checkbox v-for="citys in citiestow" :label="citys.Id" size="mini" border v-if="citys.Parent_ID==city.Id" @@change="change(citys.Parent_ID)" :key="citys.Id">
+                                {{citys.Menu_Name}}
+                            </el-checkbox>
+                        </div>
+                    </div>
+                </el-checkbox-group>
+            </el-form-item>
+        </el-form>
+        <div style="margin-left:50em" class="dialog-footer">
+            <el-button @@click="cancel()">取 消</el-button>
+            <el-button type="primary" @@click="addMenu()">确定</el-button>
+        </div>
+    </div>
+
+    <div class="page-content" id="xian">
+        <div class="search-self" style="margin:2em">
+            角色名称: <el-input v-model="search.Name" placeholder="请输入角色名称" style="width:160px"></el-input>&nbsp;&nbsp;
+            开始时间: <el-date-picker v-model="search.CreateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker>
+            结束时间: <el-date-picker v-model="search.UpdateTime"
+                                  align="right"
+                                  type="date"
+                                  @@change="CheckEndTime"
+                                  placeholder="选择日期"
+                                  :picker-options="pickerOptions">
+            </el-date-picker>&nbsp;&nbsp;
+
+            <el-button type="primary" icon="el-icon-search" @@click="searchMethod">搜索</el-button>
+            <el-button type="primary" icon="el-icon-plus" @@click="insertMethod">添加</el-button>
+            <el-button type="danger" icon="el-icon-delete" @@click="deleteMethod">删除</el-button>
+            <el-button type="success" icon="el-icon-edit" @@click="resetMethod">重置</el-button>
+        </div>
+        <div class="hr hr-18 dotted hr-double"></div>
+
+        <div class="el-table-self">
+            <el-table stripe ref="multipleTable"
+                      :data="bondsAllList"
+                      :default-expand-all="true"
+                      @@selection-change="handleSelectionChange"
+                      border
+                      style="width:100%">
+                <el-table-column type="selection" width="55" align="center"> </el-table-column>
+                <el-table-column property="Id" sortable label="ID" align="center" width="75"></el-table-column>
+                <el-table-column property="Name" sortable label="角色名称" align="center"></el-table-column>
+                <el-table-column property="Desc" label="角色说明" align="center"></el-table-column>
+                <el-table-column property="Level" label="角色级别" align="center"></el-table-column>
+                <el-table-column property="CreateTime" label="创建时间" :formatter="FormatTime" align="center"></el-table-column>
+                <el-table-column label="操作" align="center">
+                    <template slot-scope="scope">
+                        <el-button @@click="updateMenu(scope.row)" type="success" size="small">应用授权</el-button>
+                        <el-button @@click="updateMethods(scope.row)" type="warning" size="small">修改</el-button>
+                    </template>
+                </el-table-column>
+
+            </el-table>
+            <div class="pagination-footer">
+                <el-pagination @@size-change="handleSizeChange1"
+                               @@current-change="handleCurrentChange1"
+                               :current-page="currentPage1"
+                               :page-sizes="[20,50,100,200]"
+                               :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                               :total="total1">
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+
+    @*弹出框*@
+    <el-dialog :title="titlecontent" :visible.sync="dialogFormVisible">
+        <el-form :model="form" :rules="rules" ref="form">
+            <el-form-item label="角色名称" :label-width="formLabelWidth" prop="Name">
+                <el-input v-model="form.Name" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="角色描述" :label-width="formLabelWidth" prop="Desc">
+                <el-input v-model="form.Desc" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="角色级别" :label-width="formLabelWidth" prop="Level">
+                <el-input v-model="form.Level" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="您的三级密码" :label-width="formLabelWidth" prop="U_3st_Password">
+                <el-input v-model="form.U_3st_Password" show-password autocomplete="off"></el-input>
+            </el-form-item>
+            <div style="margin-left:23em" class="dialog-footer">
+                <el-button @@click="cancelDialog()">取 消</el-button>
+                <el-button type="primary" @@click="addMethod('form')">确定</el-button>
+            </div>
+    </el-dialog>
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script src="~/assets/js/jquery.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            checkAll: false,
+            isIndeterminate: true,
+            checkedCities: [],
+            cities: [],//菜单数据
+            citiestow: [],
+            citiesthree: [],
+            value: '',
+            titlecontent: '添加角色信息',
+            newsid: '',
+            total1: 100,            //数据总数
+            currentPage1: 1,        //当前页
+            pageSize: 20,           //当前页数
+            search: {               //搜索条件
+                Name: '',
+                CreateTime: '',
+                UpdateTime: ''
+            },
+            form: {
+                //弹出框表单数据
+                Id: '',
+                Name: '',
+                Desc: '',
+                Level: '',
+                U_3st_Password: '',
+            },
+            pickerOptions: {
+                disabledDate(time) {
+                    return time.getTime() > Date.now();
+                },
+                shortcuts: [{
+                    text: '今天',
+                    onClick(picker) {
+                        picker.$emit('pick', new Date());
+                    }
+                }, {
+                    text: '昨天',
+                    onClick(picker) {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24);
+                        picker.$emit('pick', date);
+                    }
+                }, {
+                    text: '一周前',
+                    onClick(picker) {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                        picker.$emit('pick', date);
+                    }
+                }]
+            },
+            rules: {
+                Name: [
+                    { required: true, message: '请输入角色名称', trigger: 'blur' },
+                    { min: 1, max: 10, message: '长度在 10 个字符之内', trigger: 'blur' }
+                ],
+                U_3st_Password: [
+                    { required: true, message: '请输入三级密码', trigger: 'blur' },
+                    { min: 1, max: 30, message: '长度不超过30个字符', trigger: 'blur' }
+                ]
+
+            },
+            formLabelWidth: '120px',    //label宽度
+            multipleSelection: [],      //表格选中数据
+            dialogFormVisible: false,    //弹出框是否显示
+            bondsAllList: null      //表格绑定数据
+        },
+        mounted: function () {
+            this.GetMenusData();
+            this.getMenuquiry();
+        },
+        methods: {
+            handleCheckAllChange(val) {
+                var sz = new Array();
+                for (var i = 0; i < this.citiesthree.length; i++) {
+                    sz[i] = this.citiesthree[i].Id;
+                }
+                this.checkedCities = val ? sz : [];
+                this.isIndeterminate = false;
+            },
+            handleCheckedCitiesChange(value) {
+                let checkedCount = value.length;
+                this.checkAll = checkedCount === this.cities.length;
+                this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+            },
+            cancel: function () {
+                $("#menus").hide();
+                $("#xian").show();
+            },
+            change: function (num) {
+                if (this.checkedCities.indexOf(num) < 0) {
+                    this.checkedCities.push(num);
+                } else 
+                    var number = 0;
+                    for (var item of this.citiestow) {
+                        if (item.Parent_ID == num) {
+                            if (this.checkedCities.indexOf(item.Id) > -1) {
+                                number++;
+                                break;
+                            }
+                        }
+                    }
+                    if (number == 0) {
+                        var index = this.checkedCities.indexOf(num);
+                        this.checkedCities.splice(index, 1);
+                    }
+
+                },
+            ResetMenu: function (num) {
+                if (this.checkedCities.indexOf(num) < 0) {
+                    for (var item of this.citiestow) {
+                        if (item.Parent_ID == num) {
+                            //判断存在后删除
+                            if (this.checkedCities.indexOf(item.Id) > -1) {
+                                var index = this.checkedCities.indexOf(item.Id);
+                                this.checkedCities.splice(index, 1);
+                            }
+                        }
+                    }
+                }
+                else {
+                    for (var item of this.citiestow) {
+                        if (item.Parent_ID == num) {
+                            this.checkedCities.push(item.Id);
+                        }
+                    }
+                }
+            },
+            //跳转到权限添加页面
+            updateMenu: function (row) {
+                $("#menus").show();
+                $("#xian").hide();
+
+                //给角色id赋值
+                this.newsid = row.Id;
+
+                //清空
+                this.checkedCities = [];
+
+                if (row.MenuIDs != null) {
+                    var num = new Array();
+                    var tidai = row.MenuIDs.split(",");
+                    for (var i = 0; i < tidai.length; i++) {
+                        num[i] = parseInt(tidai[i]);
+                    }
+                    this.checkedCities = num;
+                }
+            },
+
+            //添加权限
+            addMenu: function () {
+                var _this = this;
+                if (_this.checkedCities.length < 1) {
+                    _this.$message({
+                        message: '菜单权限不能为空！',
+                        type: 'error'
+                    });
+                    return;
+                }
+                else {
+                    var po = '/Role/updateRole?MenuIDs=' + _this.checkedCities;
+                    var news = {
+                        Id: _this.newsid
+                    };
+                    axios.post(po, news)
+                        .then(function (response) {
+                            if (response.data.result) {
+                                app.GetMenusData();//刷新
+                                _this.$message({
+                                    message: '权限授权成功！',
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: '权限授权失败!',
+                                    type: 'error'
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+
+            },
+            getMenuquiry: function () {//获取菜单信息
+                var _this = this;
+                axios.get('/Menu/GetByMenuList'
+                ).then(function (response) {
+                    if (response.data.data != null) {
+
+                        _this.citiesthree = response.data.data;
+                        for (var i = 0; i < response.data.data.length; i++) {
+                            if (response.data.data[i].Parent_ID == 0) {
+                                _this.cities.push(response.data.data[i]);
+                            }
+                            else {
+                                _this.citiestow.push(response.data.data[i]);
+                            }
+                        }
+
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            //格式化表格时间
+            FormatTime: function (row, column, cellValue, index) {
+                if (cellValue == null || cellValue == "")
+                    return "";
+                return formatTime(parseInt(cellValue.replace("/Date(", "").replace(")/", ""), 10));
+            },
+            //根据条件搜索
+            searchMethod: function () {
+                app.GetMenusData();
+            },
+            //添加
+            insertMethod: function () {
+                this.titlecontent = "添加角色信息";
+                this.dialogFormVisible = true;
+                app.emptyMethod();
+            },
+            //删除
+            deleteMethod: function () {
+                var _this = this;
+                if (this.multipleSelection.length == 0) {
+                    alert("请勾选你要删除的数据！");
+                    return;
+                }
+                this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('/User/deleteUser', this.multipleSelection)
+                        .then(function (response) {
+
+                            if (response.data.result) {
+                                app.GetMenusData();//刷新
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'error'
+                                });
+                            }
+
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+
+
+                })
+            },
+            //关闭弹框
+            cancelDialog: function () {
+                app.emptyMethod();
+                this.dialogFormVisible = false;
+            },
+            //清空
+            emptyMethod: function () {
+                this.$refs['form'].resetFields();
+                this.form.Name = '';
+                this.form.Desc = '';
+                this.form.Level = '';
+                this.form.U_3st_Password = '';
+            },
+            //重置
+            resetMethod: function () {
+                this.search.Name = '';
+                this.search.CreateTime = '';
+                this.search.UpdateTime = '';
+                app.GetMenusData();
+            },
+            //检查结束日期
+            CheckEndTime: function () {
+                var _this = this;
+                if (_this.search.CreateTime == null || _this.search.UpdateTime == null)
+                    return;
+                if (new Date(_this.search.CreateTime).getTime() >= new Date(_this.search.UpdateTime).getTime()) {
+                    _this.$message({
+                        type: 'info',
+                        message: '结束时间不能小于或等于开始时间'
+                    });
+                    _this.search.UpdateTime = '';
+                }
+            },
+            //添加菜单
+            addMethod: function (formName) {
+                var _this = this;
+                var po = '/Role/addRole';
+                var news = {
+                    Name: _this.form.Name,
+                    Desc: _this.form.Desc,
+                    Level: _this.form.Level,
+                };
+                if (_this.titlecontent == "修改角色信息") {
+                    po = '/Role/updateRole';
+                    news.Id = newsid;
+
+                }
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+
+                        //判断三级密码是否正确
+                        $.get("/Admin/SurePassWrod", { paword: this.form.U_3st_Password, biaoshi: '3' }, function (ret) {
+
+                            if (ret != "ok") {
+                                _this.$message({
+                                    message: '三级密码错误！',
+                                    type: 'error'
+                                });
+                                return;
+                            }
+                            else {
+                                axios.post(po, news)
+                                    .then(function (response) {
+                                        if (response.data.result) {
+                                            _this.dialogFormVisible = false;//关闭弹出框
+                                            app.GetMenusData();//刷新
+                                            app.emptyMethod();//清空
+                                            _this.$message({
+                                                message: response.data.message,
+                                                type: 'success'
+                                            });
+                                        } else {
+                                            _this.$message({
+                                                message: response.data.message,
+                                                type: 'error'
+                                            });
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error);
+                                    });
+                            }
+
+                        });
+
+
+                    } else {
+                        return false;
+                    }
+                })
+            }, //获取菜单
+            GetMenusData: function () {
+                var _this = this;
+
+                var param = {
+                    pageIndex: _this.currentPage1,
+                    pageSize: _this.pageSize,
+                    orderby: _this.orderby,
+                    IsAsc: _this.isAsc,
+                }
+
+                var search = _this.search;
+
+                $.ajax({
+                    url: '/Role/GetRoleByPage',
+                    type: 'post',//换成 get 无效
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        param: param,
+                        search: search
+                    }),
+                    success: function (response) {
+                        _this.bondsAllList = response.responseData.data;
+                        _this.total1 = response.total;
+                    }
+                });
+            },
+
+            //修改
+            updateMethods: function (row) {
+
+                this.titlecontent = "修改角色信息";
+                this.dialogFormVisible = true;
+                this.form.Name = row.Name;
+                this.form.Desc = row.Desc;
+                this.form.Level = row.Level;
+                newsid = row.Id;
+
+            },
+            filterHandler(value, row, column) {
+                const property = column['property'];
+                return row[property] === value;
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                console.log(val);
+            },
+            handleSizeChange1: function (pageSize) { // 每页条数切换
+                var _this = this;
+                _this.pageSize = pageSize
+                _this.handleCurrentChange1(this.currentPage1);
+            },
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage
+                _this.currentChangePage(this.bondsAllList, currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(list, currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetMenusData();
+            },
+        }
+    });
+    //格式化日期
+    function formatTime(value) {
+        var date = new Date(value);
+        var Y = date.getFullYear() + '-';
+        var M = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) + '-' : date.getMonth() + 1 + '-';
+        var D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+        var h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>

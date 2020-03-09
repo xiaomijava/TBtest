@@ -1,0 +1,357 @@
+﻿@*@{
+    Layout = "~/Views/Shared/_LayouFather.cshtml";
+}*@
+<div id="app" class="main-content-inner">
+   
+    <div class="page-content"><br />
+        <div class="search-self">
+            <el-input v-model="search.tableDataName" placeholder="请输入菜单名称" style="width:240px"></el-input>
+            <el-button type="primary" icon="el-icon-search" @@click="searchMethod">搜索</el-button>
+            <el-button type="primary" icon="el-icon-plus" @@click="addMenu">添加</el-button>
+            <el-button type="danger" icon="el-icon-delete" @@click="deleteMethod">删除</el-button>
+        </div><br />
+        <div class="hr hr-18 dotted hr-double"></div>
+        <el-table ref="multipleTable"
+                  :data="bondsAllList"
+                  :default-expand-all="true"
+                  @@selection-change="handleSelectionChange"
+                  border
+                  style="width:100%">
+            <el-table-column type="selection" width="55" align="center"> </el-table-column>
+            <el-table-column property="Menu_Name" label="菜单名称" align="center"></el-table-column>
+            <el-table-column property="Menu_Path" label="菜单路径" align="center"></el-table-column>
+            <el-table-column property="Parent_Menu" label="父级菜单" align="center"></el-table-column>
+            <el-table-column property="Menu_Icon" label="菜单图标" align="center">
+                <template slot-scope="scope">
+                    <i :class="scope.row.Menu_Icon"></i>  
+                </template>
+            </el-table-column>
+            <el-table-column property="ZIndex" label="序号" align="center"></el-table-column>
+            <el-table-column property="CreateTime" label="创建时间" :formatter="FormatTime" align="center"></el-table-column>
+            <el-table-column label="操作" align="center">
+                <template slot-scope="scope">
+                    <el-button type="success" icon="el-icon-edit"  @@click="updateMenu(scope.row)">修改</el-button>
+                </template>
+            </el-table-column>
+
+        </el-table>
+        <div class="pagination-footer">
+            <el-pagination @@size-change="handleSizeChange1"
+                           @@current-change="handleCurrentChange1"
+                           :current-page="currentPage1"
+                           :page-sizes="[10, 15,20]"
+                           :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                           :total="total1">
+            </el-pagination>
+        </div>
+    </div>
+
+    @*弹出框*@
+    <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+            <el-row>
+                <el-col :span="12" :offset="6">
+                    <el-form-item label="菜单名称" :label-width="formLabelWidth" prop="menu_name">
+                        <el-input v-model.trim="ruleForm.menu_name" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="12" :offset="6">
+                    <el-form-item label="父级菜单" :label-width="formLabelWidth">
+                        <el-select v-model="ruleForm.parentID" placeholder="请选择父级菜单">
+                            <el-option v-for="item in selectMenus" :label="item.Menu_Name" :value="item.Id"></el-option>
+                        </el-select>
+                        @*<el-input v-model="ruleForm.parentID" autocomplete="off"></el-input>*@
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="12" :offset="6">
+                    <el-form-item label="菜单路径" :label-width="formLabelWidth" prop="menu_path">
+                        <el-input v-model.trim="ruleForm.menu_path" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="12" :offset="6">
+                    <el-form-item label="菜单图标" :label-width="formLabelWidth">
+                        <el-input v-model="ruleForm.menu_icon" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="12" :offset="6">
+                    <el-form-item label="序号" :label-width="formLabelWidth">
+                        <el-input v-model="ruleForm.zIndex" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @@click="cancelDialog('ruleForm')">取 消</el-button>
+            <el-button type="primary" @@click="submitForm('ruleForm')">确定</el-button>
+        </div>
+    </el-dialog>
+</div>
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Scripts.Render("~/bundles/axios")
+@Styles.Render("~/Content/elementcss")
+@Styles.Render("~/Content/indexss")
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            total1: 100,            //数据总数
+            currentPage1: 1,        //当前页
+            pageSize: 10,           //当前页数
+            orderby: 'CreateTime',                //排序字段
+            isAsc: false,           //排序顺序
+            isUpdate: false,        //添加或修改
+            search: {               //搜索条件
+                tableDataName: '',
+            },
+            ruleForm: {                 //弹出框表单数据
+                id: 0,
+                menu_name: '',
+                parentID: 0,
+                menu_path: '',
+                menu_icon: '',
+                zIndex: '',
+            },
+            rules: {
+                menu_name: [
+                    { required: true, message: '请输入菜单名称', trigger: 'blur' },
+                    { min: 1, max: 10, message: '长度在 10 个字符之内', trigger: 'blur' }
+                ],
+            },
+            formLabelWidth: '120px',    //label宽度
+            multipleSelection: [],      //表格选中数据
+            selectMenus: [],             //菜单下拉框数据
+            dialogFormVisible: false,    //弹出框是否显示
+            dialogTitle: '',             //弹出框标题
+            bondsAllList: [],           //表格绑定数据
+            menuDatas: []
+        },
+        mounted: function () {
+            this.GetMenusData();
+            this.getSelectMenus();
+        },
+        methods: {
+            //格式化表格时间
+            FormatTime: function (row, column, cellValue, index) {
+                if (cellValue == null || cellValue == "")
+                    return "";
+                return formatTime(parseInt(cellValue.replace("/Date(", "").replace(")/", ""), 10));
+            },
+            ReturnIndex: function () {
+            },
+            //搜索
+            searchMethod: function () {
+                var _this = this;
+                _this.currentPage1 = 1;
+                _this.GetMenusData();
+            },
+            //获取菜单
+            GetMenusData: function () {
+                var _this = this;
+                axios.get('/menu/getMenusByPage?searchName=' + _this.search.tableDataName
+                    , {
+                        params: {
+                            pageIndex: _this.currentPage1,
+                            pageSize: _this.pageSize,
+                            orderby: _this.orderby,
+                            IsAsc: _this.isAsc,
+                        }
+                    }
+                ).then(function (response) {
+                    _this.bondsAllList = response.data.responseData.data;
+                    _this.total1 = response.data.total;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            //添加菜单
+            addMenu: function () {
+                this.dialogTitle = "添加菜单";
+                this.dialogFormVisible = true;
+                this.isUpdate = false;
+            },
+            //修改菜单
+            updateMenu: function (row) {
+                this.dialogFormVisible = true;
+                this.dialogTitle = "修改菜单";
+                this.isUpdate = true;
+                this.ruleForm.Id = row.Id;
+                this.ruleForm.menu_name = row.Menu_Name;
+                this.ruleForm.menu_path = row.Menu_Path;
+                this.ruleForm.parentID = row.Parent_ID;
+                this.ruleForm.menu_icon = row.Menu_Icon;
+                this.ruleForm.zIndex = row.ZIndex;
+            },
+            //删除菜单
+            deleteMethod: function () {
+                var _this = this;
+                var ids = "";
+                if (_this.multipleSelection.length == 0) {
+                    alert("至少选择一条数据");
+                    return;
+                }
+                for (var temp of _this.multipleSelection) {
+                    if (ids == "")
+                        ids += temp.Id;
+                    else
+                        ids += "," + temp.Id;
+                }
+                this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.delete('/menu/deleteMenu?ids=' + ids)
+                        .then(function (response) {
+                            if (response.data.result) {
+                                _this.GetMenusData();
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'success'
+                                });
+                            } else {
+                                _this.$message({
+                                    message: response.data.message,
+                                    type: 'error'
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            //关闭弹出框
+            cancelDialog: function (formName) {
+                this.$refs[formName].resetFields();
+                this.ruleForm.Id = 0;
+                this.ruleForm.menu_path = '';
+                this.ruleForm.parentID = 0;
+                this.ruleForm.menu_icon = '';
+                this.ruleForm.zIndex = '';
+                this.dialogFormVisible = false;
+            },
+            //提交form表单
+            submitForm: function (formName) {
+                var _this = this;
+                var menu = {
+                    Id: _this.ruleForm.Id,
+                    menu_name: _this.ruleForm.menu_name,
+                    parent_ID: _this.ruleForm.parentID,
+                    menu_path: _this.ruleForm.menu_path,
+                    menu_icon: _this.ruleForm.menu_icon,
+                    Zindex: _this.ruleForm.zIndex
+                };
+                _this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if (_this.isUpdate) {
+                            axios.put('/menu/UpdateMenu', menu)
+                                .then(function (response) {
+                                    if (response.data.result) {
+                                        _this.cancelDialog(formName);
+                                        _this.GetMenusData();
+                                        _this.$message({
+                                            message: response.data.message,
+                                            type: 'success'
+                                        });
+                                    } else {
+                                        _this.$message({
+                                            message: response.data.message,
+                                            type: 'error'
+                                        });
+                                    }
+                                })
+                                .catch(function (error) {
+
+                                });
+                        } else {
+                            axios.post('/menu/addMenu', menu)
+                                .then(function (response) {
+                                    if (response.data.result) {
+                                        _this.cancelDialog(formName);
+                                        _this.GetMenusData();
+                                        _this.$message({
+                                            message: response.data.message,
+                                            type: 'success'
+                                        });
+                                    } else {
+                                        _this.$message({
+                                            message: response.data.message,
+                                            type: 'error'
+                                        });
+                                    }
+                                })
+                                .catch(function (error) {
+
+                                });
+                        }
+
+                    } else {
+                        return false;
+                    }
+                })
+            },
+            //弹出框下拉框数据
+            getSelectMenus: function () {
+                var _this = this;
+                axios.get('/Menu/getAllMenus'
+                ).then(function (response) {
+                    if (response.data.data != null) {
+                        _this.selectMenus = response.data.data;
+                    }
+                    var firtMenu = { Menu_Name: "默认", Id: 0 };
+                    _this.selectMenus.unshift(firtMenu);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            //checkbox发生改变
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+            },
+            // 每页条数切换
+            handleSizeChange1: function (pageSize) {
+                var _this = this;
+                _this.pageSize = pageSize;
+                _this.handleCurrentChange1(_this.currentPage1);
+            },
+            //当前页发生改变
+            handleCurrentChange1: function (currentPage) {//页码切换
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.currentChangePage(currentPage)
+
+            },
+            //分页方法（重点）
+            currentChangePage(currentPage) {
+                var _this = this;
+                _this.currentPage1 = currentPage;
+                _this.GetMenusData();
+            },
+        }
+    });
+    //格式化日期
+    function formatTime(value) {
+        var date = new Date(value);
+        var Y = date.getFullYear() + '-';
+        var M = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) + '-' : date.getMonth() + 1 + '-';
+        var D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+        var h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>

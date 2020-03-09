@@ -1,0 +1,14 @@
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\TradingPlatform.Model.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\TradingPlatform.Model.pdb
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\EntityFramework.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\EntityFramework.SqlServer.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\EntityFramework.xml
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\EntityFramework.SqlServer.xml
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Release\TBTset.Model.csprojAssemblyReference.cache
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Release\TBTset.Model.csproj.CoreCompileInputs.cache
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Release\TBTset.Model.csproj.CopyComplete
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Release\TradingPlatform.Model.dll
+E:\利滚利\TradingPlatform\TradingPlatform.Model\obj\Release\TradingPlatform.Model.pdb
+E:\利滚利\TradingPlatform\TradingPlatform.Model\bin\Release\log4net.dll

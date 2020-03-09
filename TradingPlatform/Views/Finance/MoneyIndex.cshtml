@@ -1,0 +1,199 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>投资管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="~/dist/layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/dist/layuiadmin/style/admin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/dist/layuiadmin/style/login.css" media="all">
+</head>
+<body>
+
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12" id="app">
+                <div class="layui-card">
+                    <div class="layui-card-header">复利计算</div>
+                    <div class="layui-card-body" pad15>
+
+                        <div class="layui-form" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">投资金额</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.money" lay-verify="number" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">收益利率(‱*‰)</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.rate" lay-verify="much" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">收益时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" v-model="form.time" lay-verify="number" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位(/秒)</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">三级密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="password" lay-verify="pass" v-model="form.pass" lay-verType="tips" autocomplete="off" id="LAY_password" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="demo1">确认投资</button>
+
+                                    <button class="layui-btn" onclick="Over()">终止盈利</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/vue/vue.min.js"></script>
+    <script src="~/assets/js/jquery.js"></script>
+
+    <script src="~/dist/layuiadmin/layui/layui.js"></script>
+    <script>
+
+
+
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+
+            //自定义验证规则
+            form.verify({
+                title: function (value) {
+
+                    if (value.length < 5) {
+                        return '标题至少得5个字符啊';
+                    }
+                }
+                , number: [
+                    /^[1-9]\d*$/
+                    , '请输入正整数'
+                ], pass: [
+                    /^[\S]{6,12}$/
+                    , '密码必须6到12位，且不能出现空格'
+                ], much: [
+                    /^1000$|^(\d|[1 - 9]\d)$/
+                    , '请输入0-1000之间的正整数'
+                ]
+            });
+
+            //监听提交
+            form.on('submit(demo1)', function (data) {
+                app.addMethod();
+            });
+        });
+
+        layui.config({
+            base: '/dist/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'set']);
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    form: {
+                        rate: '',
+                        time: '',
+                        money: '',
+                        pass: '',
+                    },
+                }
+            },
+            mounted: function () {
+                //加载页面时执行的方法
+            },
+            methods: {
+                //添加菜单
+                addMethod: function () {
+                    var _this = this;
+                    var news = {
+                        rate: _this.form.rate,
+                        time: _this.form.time,
+                        money: _this.form.money,
+                        pass: _this.form.pass,
+                    };
+                    $.ajax({
+                        url: '/Finance/Calculation',
+                        type: 'post',//换成 get 无效
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            my: news,
+                        }),
+                        success: function (response) {
+                            if (response.result) {
+                                //修改成功的提示
+                                layer.msg(response.message, {
+                                    offset: '15px'
+                                    , icon: 1
+                                    , time: 1000
+                                }, function () {
+                                    _this.form.rate = '';
+                                    _this.form.time = '';
+                                    _this.form.money = '';
+                                    _this.form.pass = '';
+                                });
+                            } else {
+                                layer.msg(response.message, {
+                                    offset: '15px'
+                                    , icon: 2
+                                    , time: 1000
+                                }, function () {
+
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        function Over() {
+            $.get("/Finance/FlagTest", {}, function (ret) {
+
+                if (ret == "ok") {
+                    //修改成功的提示
+                    layer.msg('盈利已经终止！', {
+                        offset: '15px'
+                        , icon: 2
+                        , time: 2000
+                    });
+                }
+                else if (ret == "log") {
+                    layer.msg('请先投资！', {
+                        offset: '15px'
+                        , icon: 2
+                        , time: 2000
+                    });
+                }
+                else {
+                    layer.msg('盈利已成功终止！', {
+                        offset: '15px'
+                        , icon: 1
+                        , time: 2000
+                    });
+                }
+
+            });
+        }
+    </script>
+</body>
+</html>
